@@ -1,5 +1,7 @@
 package com.file.conversor.resource;
 
+import com.file.conversor.service.ConversorArquivoTxtService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,10 +14,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("/upload")
 public class ArquivoResource {
+
+    @Autowired
+    ConversorArquivoTxtService conversorArquivoTxtService;
 
     @PostMapping("/txt")
     public ResponseEntity<String> uploadTxt(@RequestParam("file") MultipartFile arquivo) {
@@ -26,14 +33,19 @@ public class ArquivoResource {
                 BufferedReader reader = new BufferedReader(inputStreamReader);
 
                 String linha;
-                StringBuilder conteudo = new StringBuilder();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 
                 while (reader.readLine() != null) {
                     linha = reader.readLine();
-                    conteudo.append(linha).append("\n");
+                    int pedidoId = converterStringParaInteger(linha.substring(55,64));
+                    String dataCompra = linha.substring(87,95);
+
+                    LocalDate data = LocalDate.parse(dataCompra, formatter);
+                    System.out.println(pedidoId + "  " + dataCompra);
                 }
-                //int a = converterStringParaInteger(linha.substring(0,10));
+
                 reader.close();
+                //conversorArquivoTxtService.processarArquivo(conteudo);
                 return ResponseEntity.ok("OK");
             } catch (IOException e) {
                 return ResponseEntity
