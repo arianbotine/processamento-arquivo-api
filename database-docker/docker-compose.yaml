@@ -2,7 +2,7 @@ services:
   local-postgres-compose:
     image: postgres
     environment:
-      POSTGRES_PASSWORD: "123"
+      POSTGRES_PASSWORD: "jMZDNzN1D7gp7Qk"
     ports:
       - "5432:5432"
     volumes:

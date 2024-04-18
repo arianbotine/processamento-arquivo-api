@@ -1,1 +1,1 @@
-CREATE DATABASE tutorial_spring_database;
+CREATE DATABASE vertical_logistica_database;
