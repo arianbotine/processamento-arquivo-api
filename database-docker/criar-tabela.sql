@@ -1,6 +1,15 @@
-CREATE TABLE tarefa(
-    id bigserial not null,
-    titulo VARCHAR(100) not null,
-    descricao VARCHAR(200) not null
+CREATE TABLE usuario (
+    id BIGSERIAL CONSTRAINT pk_id_usuario PRIMARY KEY,
+    nome VARCHAR(45) NOT NULL
 );
-ALTER TABLE tarefa ADD CONSTRAINT tarefa_pk PRIMARY KEY (id);
+
+CREATE TABLE pedido (
+    id BIGSERIAL PRIMARY KEY,
+    id_produto BIGINT NOT NULL,
+    valor DECIMAL(10,2) NOT NULL,
+    data_compra DATE,
+    id_usuario BIGSERIAL NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+);
+
+CREATE INDEX idx_data_compra ON pedido (data_compra);

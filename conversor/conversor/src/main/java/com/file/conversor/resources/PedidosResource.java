@@ -1,6 +1,6 @@
-package com.file.conversor.resource;
+package com.file.conversor.resources;
 
-import com.file.conversor.service.ConversorArquivoTxtService;
+import com.file.conversor.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,17 +14,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
 
 @RestController
-@RequestMapping("/upload")
-public class ArquivoResource {
+@RequestMapping("/pedidos")
+public class PedidosResource {
 
     @Autowired
-    ConversorArquivoTxtService conversorArquivoTxtService;
+    PedidoService pedidoService;
 
-    @PostMapping("/txt")
+    @PostMapping
     public ResponseEntity<String> uploadTxt(@RequestParam("file") MultipartFile arquivo) {
         if (!arquivo.isEmpty()) {
             try {
@@ -33,15 +32,9 @@ public class ArquivoResource {
                 BufferedReader reader = new BufferedReader(inputStreamReader);
 
                 String linha;
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-
                 while (reader.readLine() != null) {
                     linha = reader.readLine();
-                    int pedidoId = converterStringParaInteger(linha.substring(55,64));
-                    String dataCompra = linha.substring(87,95);
-
-                    LocalDate data = LocalDate.parse(dataCompra, formatter);
-                    System.out.println(pedidoId + "  " + dataCompra);
+                    pedidoService.registrarPedido(linha);
                 }
 
                 reader.close();
@@ -55,17 +48,11 @@ public class ArquivoResource {
                 return ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)
                         .body(e.getLocalizedMessage());
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
             }
         } else {
             return ResponseEntity.ok("Arquivo vazio");
-        }
-    }
-
-    public int converterStringParaInteger(String string) {
-        try {
-            return Integer.parseInt(string);
-        } catch (NumberFormatException exception) {
-            throw new NumberFormatException("Falha ao converter em número o registro: " + string);
         }
     }
 }
