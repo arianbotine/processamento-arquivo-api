@@ -4,10 +4,7 @@ import com.file.conversor.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -24,7 +21,7 @@ public class PedidosResource {
     PedidoService pedidoService;
 
     @PostMapping
-    public ResponseEntity<String> uploadTxt(@RequestParam("file") MultipartFile arquivo) {
+    public ResponseEntity<String> registrarPedidos(@RequestParam("file") MultipartFile arquivo) {
         if (!arquivo.isEmpty()) {
             try {
                 InputStream inputStream = arquivo.getInputStream();
@@ -54,5 +51,11 @@ public class PedidosResource {
         } else {
             return ResponseEntity.ok("Arquivo vazio");
         }
+    }
+
+    @GetMapping
+    public ResponseEntity<String> buscarPedidos(@RequestParam("orderId") Long codigoPedido) {
+
+        return ResponseEntity.ok("Arquivo vazio");
     }
 }

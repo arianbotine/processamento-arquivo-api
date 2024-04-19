@@ -37,6 +37,9 @@ public class PedidoService {
                         .build());
     }
 
+    public void buscarPedido (String registro) {
+    }
+
     public Long converterStringParaInteger(String string) {
         try {
             return Long.parseLong(string);

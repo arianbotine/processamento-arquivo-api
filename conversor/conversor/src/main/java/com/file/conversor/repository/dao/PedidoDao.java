@@ -16,9 +16,14 @@ public class PedidoDao {
 
     public void criar(PedidoDto pedidoDto) {
         Pedido pedido;
-        Optional<Pedido> pedidoOptional = pedidoRepository.findByCodigoAndProdutoId(pedidoDto.getCodigo(), pedidoDto.getProdutoId());
+        Optional<Pedido> pedidoOptional =
+                pedidoRepository.findByCodigoAndProdutoIdAndDataCompra(
+                        pedidoDto.getCodigo(),
+                        pedidoDto.getProdutoId(),
+                        pedidoDto.getDataCompra());
         if (pedidoOptional.isPresent()) {
             pedido = pedidoOptional.get();
+            System.out.println(pedido.getCodigo() + " " + pedido.getProdutoId() + " " + pedido.getDataCompra());
             Float valor = pedido.getValor() + pedidoDto.getValor();
             pedido.setValor(valor);
         } else {
