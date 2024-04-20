@@ -13,17 +13,17 @@ public class PedidoDao {
     @Autowired
     private PedidoRepository pedidoRepository;
 
-    public Pedido criar(Pedido pedido) {
+    public Pedido criar(Pedido newPedido) {
         Optional<Pedido> pedidoOptional =
-                pedidoRepository.findById(pedido.getId());
+                pedidoRepository.findById(newPedido.getId());
         if (pedidoOptional.isPresent()) {
-            pedido = pedidoOptional.get();
-            Float valorTotal = pedido.getValorTotal() + pedido.getValorTotal();
-            pedido.setValorTotal(valorTotal);
+            Pedido currentPedido = pedidoOptional.get();
+            Float valorTotal = currentPedido.getValorTotal() + newPedido.getValorTotal();
+            newPedido.setValorTotal(valorTotal);
         }
 
-        pedidoRepository.save(pedido);
-        return pedido;
+        pedidoRepository.save(newPedido);
+        return newPedido;
     }
 
     public Optional<Pedido> findById(Long pedidoId) {

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,9 +22,12 @@ public class Pedido {
     @Column(name = "data_compra")
     private Date dataCompra;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     private Usuario usuario;
+
+    @OneToMany(mappedBy = "pedido")
+    private List<PedidoProduto> pedidoProdutos;
 
     @Column(name = "valor_total")
     private Float valorTotal;

@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.ParseException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/pedidos")
@@ -63,7 +64,7 @@ public class PedidosResource {
     }
 
     @GetMapping
-    public ResponseEntity<UsuarioDto> buscarPedidos(@Valid BuscarPedidoRequestDto buscarPedidoRequestDto) {
+    public ResponseEntity<List<UsuarioDto>> buscarPedidos(@Valid BuscarPedidoRequestDto buscarPedidoRequestDto) {
         return ResponseEntity.ok(buscarPedidoService.buscar(buscarPedidoRequestDto.getPedidoId()));
     }
 }

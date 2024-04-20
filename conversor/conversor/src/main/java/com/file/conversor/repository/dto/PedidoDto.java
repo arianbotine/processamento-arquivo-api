@@ -25,6 +25,6 @@ public class PedidoDto {
     @JsonProperty("date")
     private String dataCompra;
 
-    @JsonProperty("order_id")
+    @JsonProperty("products")
     private List<ProdutoDto> produtos;
 }

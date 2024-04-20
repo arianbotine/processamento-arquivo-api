@@ -1,7 +1,9 @@
 package com.file.conversor.services;
 
+import com.file.conversor.repository.PedidoRepository;
 import com.file.conversor.repository.dao.PedidoProdutoDao;
 import com.file.conversor.repository.dto.PedidoDto;
+import com.file.conversor.repository.dto.ProdutoDto;
 import com.file.conversor.repository.dto.UsuarioDto;
 import com.file.conversor.repository.entity.Pedido;
 import com.file.conversor.repository.entity.PedidoProduto;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BuscarPedidoService {
@@ -19,20 +22,36 @@ public class BuscarPedidoService {
     @Autowired
     PedidoProdutoService pedidoProdutoService;
 
-    public UsuarioDto buscar (Long pedidoId) {
-        List<PedidoProduto> listaPedidoProduto = pedidoProdutoService.buscar(pedidoId);
+    @Autowired
+    PedidoRepository pedidoRepository;
 
-        List<PedidoDto> listaPedidoDto = new java.util.ArrayList<>(List.of());
-        for (PedidoProduto pedidoProduto : listaPedidoProduto) {
-            listaPedidoDto.add(PedidoDto.builder()
-                    .id(pedidoProduto.getPedido().getId())
-                    .valorTotal(pedidoProduto.getPedido().getValorTotal())
-                    .dataCompra(pedidoProduto.getPedido().getDataCompra().toString())
-                    .build());
-        }
-        Usuario usuario;
-        //listaPedidoProduto.stream().findFirst().ifPresent();
-        return UsuarioDto.builder()
-                .build();
+    public List<UsuarioDto> buscar (Long pedidoId) {
+        List<Pedido> pedidos = new java.util.ArrayList<>(List.of());
+
+        Pedido pedidoUnico = pedidoRepository.findById(pedidoId).get();
+
+        pedidos.add(pedidoUnico);
+        return pedidos.stream().map(pedido -> {
+            Usuario usuario = pedido.getUsuario();
+            UsuarioDto UsuarioDto = new UsuarioDto();
+            UsuarioDto.setId(usuario.getId());
+            UsuarioDto.setNome(usuario.getNome());
+
+            PedidoDto PedidoDto = new PedidoDto();
+            PedidoDto.setId(pedido.getId());
+            PedidoDto.setValorTotal(pedido.getValorTotal());
+            PedidoDto.setDataCompra(pedido.getDataCompra().toString());
+
+            List<ProdutoDto> ProdutoDtos = pedido.getPedidoProdutos().stream().map(pp -> {
+                ProdutoDto ProdutoDto = new ProdutoDto();
+                ProdutoDto.setId(pp.getProduto().getId());
+                ProdutoDto.setValor(pp.getValor().toString());
+                return ProdutoDto;
+            }).collect(Collectors.toList());
+
+            PedidoDto.setProdutos(ProdutoDtos);
+            UsuarioDto.setPedidos(List.of(PedidoDto));
+            return UsuarioDto;
+        }).collect(Collectors.toList());
     }
 }
