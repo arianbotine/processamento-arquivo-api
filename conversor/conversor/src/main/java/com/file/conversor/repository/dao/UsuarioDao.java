@@ -1,10 +1,7 @@
 package com.file.conversor.repository.dao;
 
-import com.file.conversor.repository.PedidoRepository;
 import com.file.conversor.repository.UsuarioRepository;
-import com.file.conversor.repository.dto.PedidoDto;
 import com.file.conversor.repository.dto.UsuarioDto;
-import com.file.conversor.repository.entity.Pedido;
 import com.file.conversor.repository.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,13 +16,16 @@ public class UsuarioDao {
 
     public Usuario criar(UsuarioDto usuarioDto) {
         Usuario usuario;
-        Optional<Usuario> usuarioOptional  = usuarioRepository.findByCodigo(usuarioDto.getCodigo());
+        Optional<Usuario> usuarioOptional  = usuarioRepository.findById(usuarioDto.getId());
         if (usuarioOptional.isPresent()) {
             usuario = usuarioOptional.get();
+            if (!usuario.getNome().equals(usuarioDto.getNome())) {
+                return usuario;
+            }
             usuario.setNome(usuarioDto.getNome());
         } else {
             usuario = Usuario.builder()
-                    .codigo(usuarioDto.getCodigo())
+                    .id(usuarioDto.getId())
                     .nome(usuarioDto.getNome())
                     .build();
         }

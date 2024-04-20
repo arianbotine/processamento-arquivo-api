@@ -1,21 +1,26 @@
 CREATE TABLE usuario (
-    id BIGSERIAL PRIMARY KEY NOT NULL,
-    codigo_usuario BIGINT not null UNIQUE,
+    id BIGINT PRIMARY KEY NOT NULL UNIQUE,
     nome VARCHAR(45) NOT NULL
 );
 
-CREATE INDEX idx_codigo_usuario ON usuario (codigo_usuario);
-
 CREATE TABLE pedido (
-    id BIGSERIAL PRIMARY KEY NOT NULL,
-    codigo_pedido BIGINT not null,
-    id_produto BIGINT NOT NULL,
-    valor DECIMAL(10,2) NOT NULL,
-    data_compra DATE,
+    id BIGINT PRIMARY KEY NOT NULL,
+    data_compra DATE NOT NULL,
     id_usuario BIGSERIAL NOT NULL,
-    CONSTRAINT pedido_produto UNIQUE (codigo_pedido, id_produto),
+    valor_total DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
 
-CREATE INDEX idx_codigo_pedido ON pedido (codigo_pedido);
 CREATE INDEX idx_data_compra ON pedido (data_compra);
+
+CREATE TABLE pedido_produto_valor (
+    id BIGSERIAL PRIMARY KEY NOT NULL,
+    id_pedido BIGINT NOT NULL,
+    id_produto BIGINT NOT NULL,
+    valor DECIMAL(10,2) NOT NULL,
+    CONSTRAINT pedido_produto UNIQUE (id_pedido,id_produto),
+    FOREIGN KEY (id_pedido) REFERENCES pedido(id)
+);
+
+CREATE INDEX idx_id_pedido ON pedido_produto_valor (id_pedido);
+CREATE INDEX idx_id_produto ON pedido_produto_valor (id_produto);

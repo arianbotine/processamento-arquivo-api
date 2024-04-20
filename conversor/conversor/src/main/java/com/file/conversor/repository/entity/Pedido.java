@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
-import java.util.UUID;
-
 
 @Getter
 @Setter
@@ -17,18 +15,8 @@ import java.util.UUID;
 public class Pedido {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "serial")
+    @Column(name = "id")
     private Long id;
-
-    @Column(name = "codigo_pedido")
-    private Long codigo;
-
-    @Column(name = "id_produto")
-    private Long produtoId;
-
-    @Column(name = "valor")
-    private Float valor;
 
     @Column(name = "data_compra")
     private Date dataCompra;
@@ -36,4 +24,7 @@ public class Pedido {
     @OneToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     private Usuario usuario;
+
+    @Column(name = "valor_total")
+    private Float valorTotal;
 }

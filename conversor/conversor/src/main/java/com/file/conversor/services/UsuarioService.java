@@ -12,13 +12,12 @@ public class UsuarioService {
     @Autowired
     UsuarioDao usuarioDao;
 
-    public Usuario registrarUsuario (String registro) {
-        //int usuarioId = converterStringParaInteger(registro.substring(0,10));
+    public Usuario registrar (String registro) {
         String usuarioId = registro.substring(1,10);
         String nome = registro.substring(11,55).trim();
 
         Long usuarioIdint = converterStringParaInteger(usuarioId);
-        return usuarioDao.criar(UsuarioDto.builder().codigo(usuarioIdint).nome(nome).build());
+        return usuarioDao.criar(UsuarioDto.builder().id(usuarioIdint).nome(nome).build());
     }
 
     public Long converterStringParaInteger(String string) {

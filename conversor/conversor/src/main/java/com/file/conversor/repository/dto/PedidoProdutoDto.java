@@ -1,24 +1,23 @@
 package com.file.conversor.repository.dto;
 
-import com.file.conversor.repository.entity.Usuario;
+import com.file.conversor.repository.entity.Pedido;
+import com.file.conversor.repository.entity.Produto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class PedidoDto {
+public class PedidoProdutoDto {
 
     private Long id;
 
-    private Date dataCompra;
+    private Pedido pedido;
 
-    private Usuario usuario;
+    private Produto produto;
 
-    private Float valorTotal;
+    private Float valor;
 }

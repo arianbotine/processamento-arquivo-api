@@ -15,7 +15,5 @@ public class UsuarioDto {
 
     private Long id;
 
-    private Long codigo;
-
     private String nome;
 }

@@ -1,9 +1,10 @@
 package com.file.conversor.repository.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
-
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -11,13 +12,10 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @Entity
-@Table(name ="usuario")
-public class Usuario {
+@Table(name ="produto")
+public class Produto {
 
     @Id
     @Column(name = "id")
     private Long id;
-
-    @Column(name = "nome")
-    private String nome;
 }

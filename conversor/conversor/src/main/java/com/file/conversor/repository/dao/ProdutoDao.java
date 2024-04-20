@@ -1,38 +1,31 @@
 package com.file.conversor.repository.dao;
 
-import com.file.conversor.repository.PedidoRepository;
-import com.file.conversor.repository.dto.PedidoDto;
-import com.file.conversor.repository.entity.Pedido;
+import com.file.conversor.repository.ProdutoRepository;
+import com.file.conversor.repository.dto.ProdutoDto;
+import com.file.conversor.repository.entity.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class PedidoDao {
+public class ProdutoDao {
 
     @Autowired
-    private PedidoRepository pedidoRepository;
+    private ProdutoRepository produtoRepository;
 
-    public Pedido criar(PedidoDto pedidoDto) {
-        Pedido pedido;
-        Optional<Pedido> pedidoOptional =
-                pedidoRepository.findById(pedidoDto.getId());
-        if (pedidoOptional.isPresent()) {
-            pedido = pedidoOptional.get();
-            Float valorTotal = pedido.getValorTotal() + pedidoDto.getValorTotal();
-            pedido.setValorTotal(valorTotal);
+    public Produto criar(ProdutoDto produtoDto) {
+        Produto produto;
+        Optional<Produto> produtoOptional  = produtoRepository.findById(produtoDto.getId());
+        if (produtoOptional.isPresent()) {
+            return produtoOptional.get();
         } else {
-            pedido = Pedido.builder()
-                    .id(pedidoDto.getId())
-                    .dataCompra(pedidoDto.getDataCompra())
-                    .usuario(pedidoDto.getUsuario())
-                    .valorTotal(pedidoDto.getValorTotal())
+            produto = Produto.builder()
+                    .id(produtoDto.getId())
                     .build();
         }
-
-        pedidoRepository.save(pedido);
-        return pedido;
+        produtoRepository.save(produto);
+        return produto;
     }
 /*
     public TarefaDto atualizar (TarefaDto TarefaDto, Long tarefaId) {

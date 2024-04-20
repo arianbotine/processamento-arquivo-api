@@ -1,38 +1,36 @@
 package com.file.conversor.repository.dao;
 
-import com.file.conversor.repository.PedidoRepository;
-import com.file.conversor.repository.dto.PedidoDto;
-import com.file.conversor.repository.entity.Pedido;
+import com.file.conversor.repository.PedidoProdutoRepository;
+import com.file.conversor.repository.dto.PedidoProdutoDto;
+import com.file.conversor.repository.entity.PedidoProduto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class PedidoDao {
+public class PedidoProdutoDao {
 
     @Autowired
-    private PedidoRepository pedidoRepository;
+    private PedidoProdutoRepository pedidoProdutoRepository;
 
-    public Pedido criar(PedidoDto pedidoDto) {
-        Pedido pedido;
-        Optional<Pedido> pedidoOptional =
-                pedidoRepository.findById(pedidoDto.getId());
-        if (pedidoOptional.isPresent()) {
-            pedido = pedidoOptional.get();
-            Float valorTotal = pedido.getValorTotal() + pedidoDto.getValorTotal();
-            pedido.setValorTotal(valorTotal);
+    public void criar(PedidoProdutoDto pedidoProdutoDto) {
+        PedidoProduto pedidoProduto;
+        Optional<PedidoProduto> pedidoProdutoValorOptional =
+                pedidoProdutoRepository.findByPedidoAndProduto(pedidoProdutoDto.getPedido(), pedidoProdutoDto.getProduto());
+        if (pedidoProdutoValorOptional.isPresent()) {
+            pedidoProduto = pedidoProdutoValorOptional.get();
+            Float valor = pedidoProduto.getValor() + pedidoProdutoDto.getValor();
+            pedidoProduto.setValor(valor);
         } else {
-            pedido = Pedido.builder()
-                    .id(pedidoDto.getId())
-                    .dataCompra(pedidoDto.getDataCompra())
-                    .usuario(pedidoDto.getUsuario())
-                    .valorTotal(pedidoDto.getValorTotal())
+            pedidoProduto = PedidoProduto.builder()
+                    .pedido(pedidoProdutoDto.getPedido())
+                    .produto(pedidoProdutoDto.getProduto())
+                    .valor(pedidoProdutoDto.getValor())
                     .build();
         }
 
-        pedidoRepository.save(pedido);
-        return pedido;
+        pedidoProdutoRepository.save(pedidoProduto);
     }
 /*
     public TarefaDto atualizar (TarefaDto TarefaDto, Long tarefaId) {

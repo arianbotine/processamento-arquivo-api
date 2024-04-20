@@ -2,7 +2,8 @@ package com.file.conversor.services;
 
 import com.file.conversor.repository.dao.PedidoDao;
 import com.file.conversor.repository.dto.PedidoDto;
-import com.file.conversor.repository.dto.UsuarioDto;
+import com.file.conversor.repository.entity.Pedido;
+import com.file.conversor.repository.entity.Produto;
 import com.file.conversor.repository.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,23 +19,33 @@ public class PedidoService {
     UsuarioService usuarioService;
 
     @Autowired
+    ProdutoService produtoService;
+
+    @Autowired
+    PedidoProdutoService pedidoProdutoService;
+
+    @Autowired
     PedidoDao pedidoDao;
 
     public void registrarPedido (String registro) throws ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("yyyyMMdd");
-        Usuario usuario = usuarioService.registrarUsuario(registro);
-        Long codigoPedido = converterStringParaInteger(registro.substring(56,65));
+        Usuario usuario = usuarioService.registrar(registro);
+
+        Long pedidoId = converterStringParaInteger(registro.substring(56,65));
         Long produtoId = converterStringParaInteger(registro.substring(66,75));
-        Float valor = Float.parseFloat(registro.substring(76,87));
+        Float valorTotal = Float.parseFloat(registro.substring(76,87));
         Date dataCompra = formato.parse(registro.substring(87,95));
 
-        pedidoDao.criar(PedidoDto.builder()
+        Pedido pedido = pedidoDao.criar(PedidoDto.builder()
+                        .id(pedidoId)
                         .usuario(usuario)
-                        .codigo(codigoPedido)
-                        .produtoId(produtoId)
-                        .valor(valor)
+                        .valorTotal(valorTotal)
                         .dataCompra(dataCompra)
                         .build());
+
+        Produto produto = produtoService.registrar(produtoId);
+        pedidoProdutoService.registrar(pedido, produto, valorTotal);
+
     }
 
     public void buscarPedido (String registro) {
