@@ -1,6 +1,12 @@
 package com.file.conversor.resources;
 
+import com.file.conversor.repository.dto.BuscarPedidoRequestDto;
+import com.file.conversor.repository.dto.UsuarioDto;
+import com.file.conversor.services.BuscarPedidoService;
+import com.file.conversor.services.PedidoProdutoService;
 import com.file.conversor.services.PedidoService;
+import com.file.conversor.services.RegistrarPedidoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +24,10 @@ import java.text.ParseException;
 public class PedidosResource {
 
     @Autowired
-    PedidoService pedidoService;
+    RegistrarPedidoService registrarPedidoService;
+
+    @Autowired
+    BuscarPedidoService buscarPedidoService;
 
     @PostMapping
     public ResponseEntity<String> registrarPedidos(@RequestParam("file") MultipartFile arquivo) {
@@ -31,12 +40,12 @@ public class PedidosResource {
                 String linha;
                 while (reader.readLine() != null) {
                     linha = reader.readLine();
-                    pedidoService.registrarPedido(linha);
+                    registrarPedidoService.registrar(linha);
                 }
 
                 reader.close();
                 //conversorArquivoTxtService.processarArquivo(conteudo);
-                return ResponseEntity.ok("OK");
+                return ResponseEntity.status(HttpStatus.CREATED).body("Recurso criado com sucesso!");
             } catch (IOException e) {
                 return ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)
@@ -54,8 +63,7 @@ public class PedidosResource {
     }
 
     @GetMapping
-    public ResponseEntity<String> buscarPedidos(@RequestParam("orderId") Long codigoPedido) {
-
-        return ResponseEntity.ok("Arquivo vazio");
+    public ResponseEntity<UsuarioDto> buscarPedidos(@Valid BuscarPedidoRequestDto buscarPedidoRequestDto) {
+        return ResponseEntity.ok(buscarPedidoService.buscar(buscarPedidoRequestDto.getPedidoId()));
     }
 }

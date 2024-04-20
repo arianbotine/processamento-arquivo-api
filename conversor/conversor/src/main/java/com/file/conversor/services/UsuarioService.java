@@ -1,7 +1,6 @@
 package com.file.conversor.services;
 
 import com.file.conversor.repository.dao.UsuarioDao;
-import com.file.conversor.repository.dto.UsuarioDto;
 import com.file.conversor.repository.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +15,14 @@ public class UsuarioService {
         String usuarioId = registro.substring(1,10);
         String nome = registro.substring(11,55).trim();
 
-        Long usuarioIdint = converterStringParaInteger(usuarioId);
-        return usuarioDao.criar(UsuarioDto.builder().id(usuarioIdint).nome(nome).build());
+        Long usuarioIdint = converterStringParaLong(usuarioId);
+        return usuarioDao.criar(Usuario.builder()
+                .id(usuarioIdint)
+                .nome(nome)
+                .build());
     }
 
-    public Long converterStringParaInteger(String string) {
+    public Long converterStringParaLong(String string) {
         try {
             return Long.parseLong(string);
         } catch (NumberFormatException exception) {
