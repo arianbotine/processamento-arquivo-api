@@ -2,11 +2,9 @@ package com.file.conversor.service;
 
 import com.file.conversor.mother.UsuarioMother;
 import com.file.conversor.repository.dao.UsuarioDao;
-import com.file.conversor.repository.dto.PedidoDto;
-import com.file.conversor.repository.dto.ProdutoDto;
 import com.file.conversor.repository.dto.UsuarioDto;
 import com.file.conversor.repository.entity.Usuario;
-import com.file.conversor.repository.mapper.UsuarioDtoMapper;
+import com.file.conversor.service.mapper.UsuarioDtoMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

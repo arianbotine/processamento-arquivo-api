@@ -2,7 +2,7 @@ package com.file.conversor.service;
 
 import com.file.conversor.repository.dao.UsuarioDao;
 import com.file.conversor.repository.dto.UsuarioDto;
-import com.file.conversor.repository.mapper.UsuarioDtoMapper;
+import com.file.conversor.service.mapper.UsuarioDtoMapper;
 import com.file.conversor.repository.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

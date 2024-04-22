@@ -1,9 +1,11 @@
 package com.file.conversor.service;
 
+import com.file.conversor.repository.dto.RegistroPedidoDto;
 import com.file.conversor.repository.entity.Pedido;
 import com.file.conversor.repository.entity.PedidoProduto;
 import com.file.conversor.repository.entity.Produto;
 import com.file.conversor.repository.entity.Usuario;
+import com.file.conversor.service.converter.RegistroPedidoDtoConverter;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Service
-public class RegistrarPedidoService {
+public class RegistraPedidoService {
 
     @Autowired
     UsuarioService usuarioService;
@@ -27,46 +29,41 @@ public class RegistrarPedidoService {
     @Autowired
     PedidoService pedidoService;
 
+    @Autowired
+    RegistroPedidoDtoConverter registroPedidoDtoConverter;
+
+    private final long QUANTIDADE_CARACTERES_OBRIGATORIO = 95;
+
     @Transactional
     public void registrar(String registro) throws ParseException {
-        SimpleDateFormat formato = new SimpleDateFormat("yyyyMMdd");
 
-        Long usuarioId = converterStringParaLong(registro.substring(1,10));
-        String usuarioNome = registro.substring(11,55).trim();
+        if (registro.length() != QUANTIDADE_CARACTERES_OBRIGATORIO) {
+            throw new IllegalStateException("Invalid format on the line");
+        }
+
+        RegistroPedidoDto registroPedidoDto =
+                registroPedidoDtoConverter.toDto(registro);
 
         Usuario usuario = usuarioService.registrar(Usuario.builder()
-                .id(usuarioId)
-                .nome(usuarioNome)
+                .id(registroPedidoDto.getUsuarioId())
+                .nome(registroPedidoDto.getUsuarioNome())
                 .build());
 
-        Long pedidoId = converterStringParaLong(registro.substring(56,65));
-        Long produtoId = converterStringParaLong(registro.substring(66,75));
-        Float pedidoValor = Float.parseFloat(registro.substring(76,87));
-        Date dataCompra = formato.parse(registro.substring(87,95));
-
         Pedido pedido = pedidoService.registrar(Pedido.builder()
-                .id(pedidoId)
+                .id(registroPedidoDto.getPedidoId())
                 .usuario(usuario)
-                .valorTotal(pedidoValor)
-                .dataCompra(dataCompra)
+                .valorTotal(registroPedidoDto.getPedidoValor())
+                .dataCompra(registroPedidoDto.getDatacompra())
                 .build());
 
         Produto produto = produtoService.registrar(Produto.builder()
-                .id(produtoId)
+                .id(registroPedidoDto.getProdutoId())
                 .build());
 
         pedidoProdutoService.registrar(PedidoProduto.builder()
                 .pedido(pedido)
                 .produto(produto)
-                .valor(pedidoValor).build());
-
-    }
-
-    public Long converterStringParaLong(String string) {
-        try {
-            return Long.parseLong(string);
-        } catch (NumberFormatException exception) {
-            throw new NumberFormatException("Falha ao converter em número o registro: " + string);
-        }
+                .valor(registroPedidoDto.getPedidoValor())
+                .build());
     }
 }

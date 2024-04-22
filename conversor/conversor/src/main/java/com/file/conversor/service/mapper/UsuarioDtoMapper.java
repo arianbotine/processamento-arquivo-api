@@ -1,4 +1,4 @@
-package com.file.conversor.repository.mapper;
+package com.file.conversor.service.mapper;
 
 import com.file.conversor.repository.dto.PedidoDto;
 import com.file.conversor.repository.dto.ProdutoDto;

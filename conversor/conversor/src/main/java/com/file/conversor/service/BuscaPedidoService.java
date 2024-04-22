@@ -19,6 +19,7 @@ public class BuscaPedidoService {
 
     public List<UsuarioDto> buscar (BuscaPedidoRequestDto buscaPedidoRequestDto) throws ParseException {
 
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         List<Usuario> usuarios = new java.util.ArrayList<>(List.of());
         if (Objects.isNull(buscaPedidoRequestDto.getPedidoId())
                 && Objects.isNull(buscaPedidoRequestDto.getDataInicial())
@@ -29,8 +30,8 @@ public class BuscaPedidoService {
                 && Objects.nonNull(buscaPedidoRequestDto.getDataInicial())
                 && Objects.nonNull(buscaPedidoRequestDto.getDataFinal())) {
 
-            Date dataInicial = converterStringParaData(buscaPedidoRequestDto.getDataInicial());
-            Date dataFinal = converterStringParaData(buscaPedidoRequestDto.getDataFinal());
+            Date dataInicial = formato.parse(buscaPedidoRequestDto.getDataInicial());
+            Date dataFinal = formato.parse(buscaPedidoRequestDto.getDataFinal());
             usuarios = usuarioService.buscarPorDataCompraPedidoAndPedido(
                     buscaPedidoRequestDto.getPedidoId(),
                     dataInicial,
@@ -38,8 +39,8 @@ public class BuscaPedidoService {
         } else if ((Objects.nonNull(buscaPedidoRequestDto.getDataInicial())
                 && Objects.nonNull(buscaPedidoRequestDto.getDataFinal()))) {
 
-            Date dataInicial = converterStringParaData(buscaPedidoRequestDto.getDataInicial());
-            Date dataFinal = converterStringParaData(buscaPedidoRequestDto.getDataFinal());
+            Date dataInicial = formato.parse(buscaPedidoRequestDto.getDataInicial());
+            Date dataFinal = formato.parse(buscaPedidoRequestDto.getDataFinal());
             usuarios = usuarioService.buscarPorDataCompraPedido(dataInicial, dataFinal);
         } else if (Objects.nonNull(buscaPedidoRequestDto.getPedidoId())) {
 
@@ -48,10 +49,5 @@ public class BuscaPedidoService {
         }
 
         return usuarioService.toListDto(usuarios);
-    }
-
-    private Date converterStringParaData(String dataString) throws ParseException {
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        return formato.parse(dataString);
     }
 }
