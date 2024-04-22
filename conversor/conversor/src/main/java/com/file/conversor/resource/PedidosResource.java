@@ -4,7 +4,6 @@ import com.file.conversor.repository.dto.BuscaPedidoRequestDto;
 import com.file.conversor.repository.dto.UsuarioDto;
 import com.file.conversor.service.BuscaPedidoService;
 import com.file.conversor.service.RegistrarPedidoService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

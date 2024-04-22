@@ -1,10 +1,8 @@
 package com.file.conversor.service;
 
 import com.file.conversor.mother.PedidoMother;
-import com.file.conversor.mother.UsuarioMother;
 import com.file.conversor.repository.dao.PedidoDao;
 import com.file.conversor.repository.entity.Pedido;
-import com.file.conversor.repository.entity.Usuario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -37,7 +37,7 @@ class PedidoProdutoDaoTest {
     @BeforeEach
     public void criarRegistros() {
         Usuario usuario = UsuarioMother.simples().build();
-        Pedido pedido = PedidoMother.simples().build();
+        Pedido pedido = PedidoMother.simples().usuario(usuario).build();
         Produto produto = ProdutoMother.simples().build();
 
         this.criarUsuario(usuario);
@@ -45,6 +45,8 @@ class PedidoProdutoDaoTest {
         this.criarPedido(pedido);
         this.criarPedidoProduto(PedidoProdutoMother
                 .semPersistir()
+                        .pedido(pedido)
+                        .produto(produto)
                 .build());
     }
 
@@ -60,10 +62,10 @@ class PedidoProdutoDaoTest {
     }
 
     @Test
-    @DisplayName(value = "Não deve retornar registro quando pesquisar por pedido e produto que existem persistidos")
+    @DisplayName(value = "Não deve retornar registro quando pesquisar por pedido e produto inexistentes")
     void naoDeveRetornarRegistroPorPedidoProdutoNaoExistentes() {
-        Pedido pedido = PedidoMother.simples().build();
-        Produto produto = Produto.builder().id(25L).build();
+        Pedido pedido = PedidoMother.simples().id(79L).build();
+        Produto produto = Produto.builder().id(27L).build();
 
         Optional<PedidoProduto> resultado = this.pedidoProdutoDao.findByPedidoAndProduto(pedido, produto);
 
@@ -85,7 +87,7 @@ class PedidoProdutoDaoTest {
     @Test
     @DisplayName(value = "Não deve retornar registro por pedido não existente")
     void naoDeveRetornarRegistroPorPedidoNaoExistente() {
-        Pedido pedido = PedidoMother.simples().build();
+        Pedido pedido = PedidoMother.simples().id(79L).build();
 
         List<PedidoProduto> resultado = this.pedidoProdutoDao.findByPedido(pedido);
 

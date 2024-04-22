@@ -2,8 +2,10 @@ package com.file.conversor.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLRestriction;
+import org.hibernate.annotations.Where;
 
-import java.util.UUID;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,4 +22,7 @@ public class Usuario {
 
     @Column(name = "nome")
     private String nome;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Pedido> pedidos;
 }

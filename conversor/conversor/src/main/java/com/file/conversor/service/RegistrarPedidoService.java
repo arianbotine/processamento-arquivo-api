@@ -1,6 +1,7 @@
 package com.file.conversor.service;
 
 import com.file.conversor.repository.entity.Pedido;
+import com.file.conversor.repository.entity.PedidoProduto;
 import com.file.conversor.repository.entity.Produto;
 import com.file.conversor.repository.entity.Usuario;
 import jakarta.transaction.Transactional;
@@ -53,7 +54,11 @@ public class RegistrarPedidoService {
         Produto produto = produtoService.registrar(Produto.builder()
                 .id(produtoId)
                 .build());
-        pedidoProdutoService.registrar(pedido, produto, pedidoValor);
+
+        pedidoProdutoService.registrar(PedidoProduto.builder()
+                .pedido(pedido)
+                .produto(produto)
+                .valor(pedidoValor).build());
 
     }
 

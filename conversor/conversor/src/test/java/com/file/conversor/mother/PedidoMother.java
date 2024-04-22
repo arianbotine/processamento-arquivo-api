@@ -11,7 +11,7 @@ public class PedidoMother {
         return Pedido.builder()
                 .id(78L)
                 .usuario(UsuarioMother.simples().build())
-                .dataCompra(new Date())
+                .dataCompra(new Date(2024,3,15))
                 .valorTotal(100.20F);
     }
 }

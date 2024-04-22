@@ -1,9 +1,7 @@
 package com.file.conversor.service;
 
 import com.file.conversor.repository.dao.PedidoProdutoDao;
-import com.file.conversor.repository.entity.Pedido;
 import com.file.conversor.repository.entity.PedidoProduto;
-import com.file.conversor.repository.entity.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +13,17 @@ public class PedidoProdutoService {
     @Autowired
     PedidoProdutoDao pedidoProdutoDao;
 
-    public void registrar (Pedido pedido, Produto produto, Float produtoValor) {
-
-        PedidoProduto pedidoProduto =
-                PedidoProduto.builder()
-                        .pedido(pedido)
-                        .produto(produto)
-                        .valor(produtoValor)
-                        .build();
+    public void registrar (PedidoProduto pedidoProduto) {
 
         Optional<PedidoProduto> pedidoProdutoValorOptional =
-                pedidoProdutoDao.findByPedidoAndProduto(pedido, produto);
+                pedidoProdutoDao.findByPedidoAndProduto(
+                        pedidoProduto.getPedido(),
+                        pedidoProduto.getProduto());
         if (pedidoProdutoValorOptional.isPresent()) {
-            pedidoProduto = pedidoProdutoValorOptional.get();
-            Float valor = pedidoProduto.getValor() + produtoValor;
-            pedidoProduto.setValor(valor);
+            PedidoProduto currentPedidoProduto = pedidoProdutoValorOptional.get();
+            Float valor = currentPedidoProduto.getValor() + pedidoProduto.getValor();
+            currentPedidoProduto.setValor(valor);
+            pedidoProduto = currentPedidoProduto;
         }
 
         pedidoProdutoDao.save(pedidoProduto);
