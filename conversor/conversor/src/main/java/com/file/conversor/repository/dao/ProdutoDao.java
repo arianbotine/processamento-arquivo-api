@@ -1,7 +1,6 @@
 package com.file.conversor.repository.dao;
 
 import com.file.conversor.repository.ProdutoRepository;
-import com.file.conversor.repository.dto.ProdutoDto;
 import com.file.conversor.repository.entity.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class BuscarPedidoRequestDto {
+public class BuscaPedidoRequestDto {
 
     private Long pedidoId;
 
-    private Long dataInicial;
+    private String dataInicial;
 
-    private Long dataFinal;
+    private String dataFinal;
 }

@@ -1,11 +1,9 @@
-package com.file.conversor.resources;
+package com.file.conversor.resource;
 
-import com.file.conversor.repository.dto.BuscarPedidoRequestDto;
+import com.file.conversor.repository.dto.BuscaPedidoRequestDto;
 import com.file.conversor.repository.dto.UsuarioDto;
-import com.file.conversor.services.BuscarPedidoService;
-import com.file.conversor.services.PedidoProdutoService;
-import com.file.conversor.services.PedidoService;
-import com.file.conversor.services.RegistrarPedidoService;
+import com.file.conversor.service.BuscaPedidoService;
+import com.file.conversor.service.RegistrarPedidoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,14 +19,14 @@ import java.text.ParseException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pedidos")
+@RequestMapping("/orders")
 public class PedidosResource {
 
     @Autowired
     RegistrarPedidoService registrarPedidoService;
 
     @Autowired
-    BuscarPedidoService buscarPedidoService;
+    BuscaPedidoService buscaPedidoService;
 
     @PostMapping
     public ResponseEntity<String> registrarPedidos(@RequestParam("file") MultipartFile arquivo) {
@@ -64,7 +62,16 @@ public class PedidosResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<UsuarioDto>> buscarPedidos(@Valid BuscarPedidoRequestDto buscarPedidoRequestDto) {
-        return ResponseEntity.ok(buscarPedidoService.buscar(buscarPedidoRequestDto.getPedidoId()));
+    public ResponseEntity<List<UsuarioDto>> buscarPedidos(
+            @RequestParam(value = "orderId", required = false) Long pedidoId,
+            @RequestParam(value = "startDate", required = false) String dataInicial,
+            @RequestParam(value = "endDate", required = false) String dataFinal) throws ParseException {
+
+        return ResponseEntity.ok(buscaPedidoService.buscar(
+                BuscaPedidoRequestDto.builder()
+                        .pedidoId(pedidoId)
+                        .dataInicial(dataInicial)
+                        .dataFinal(dataFinal)
+                        .build()));
     }
 }

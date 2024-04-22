@@ -1,6 +1,5 @@
-package com.file.conversor.services;
+package com.file.conversor.service;
 
-import com.file.conversor.repository.dao.PedidoDao;
 import com.file.conversor.repository.entity.Pedido;
 import com.file.conversor.repository.entity.Produto;
 import com.file.conversor.repository.entity.Usuario;

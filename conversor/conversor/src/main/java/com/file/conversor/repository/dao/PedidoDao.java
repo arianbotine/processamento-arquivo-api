@@ -5,6 +5,8 @@ import com.file.conversor.repository.entity.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,8 +28,16 @@ public class PedidoDao {
         return newPedido;
     }
 
-    public Optional<Pedido> findById(Long pedidoId) {
+    public List<Pedido> buscarTodos() {
+        return pedidoRepository.findAll();
+    }
+
+    public Optional<Pedido> buscarPorId(Long pedidoId) {
         return pedidoRepository.findById(pedidoId);
+    }
+
+    public List<Pedido> buscarPorDataCompra(Date dataInicial, Date dataFinal) {
+        return pedidoRepository.findByDataCompraBetween(dataInicial,dataFinal);
     }
 
 }

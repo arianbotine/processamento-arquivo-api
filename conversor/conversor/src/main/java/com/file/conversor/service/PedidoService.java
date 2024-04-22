@@ -1,4 +1,4 @@
-package com.file.conversor.services;
+package com.file.conversor.service;
 
 import com.file.conversor.repository.dao.PedidoDao;
 import com.file.conversor.repository.entity.Pedido;
@@ -6,6 +6,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,9 +21,17 @@ public class PedidoService {
         return pedidoDao.criar(pedido);
     }
 
-    public Pedido buscar (Long pedidoId) {
-        Optional<Pedido> pedidoOptional = pedidoDao.findById(pedidoId);
+    public List<Pedido> buscarTodos () {
+        return pedidoDao.buscarTodos();
+    }
+
+    public Pedido buscarPorId (Long pedidoId) {
+        Optional<Pedido> pedidoOptional = pedidoDao.buscarPorId(pedidoId);
         return pedidoOptional.orElse(null);
+    }
+
+    public List<Pedido> buscarPorDataCompra(Date dataInicial, Date dataFinal) {
+        return pedidoDao.buscarPorDataCompra(dataInicial,dataFinal);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.file.conversor.services;
+package com.file.conversor.service;
 
 import com.file.conversor.repository.dao.ProdutoDao;
 import com.file.conversor.repository.entity.Produto;
