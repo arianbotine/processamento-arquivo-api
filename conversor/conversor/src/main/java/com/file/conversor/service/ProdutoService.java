@@ -5,6 +5,8 @@ import com.file.conversor.repository.entity.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProdutoService {
 
@@ -12,8 +14,11 @@ public class ProdutoService {
     ProdutoDao produtoDao;
 
     public Produto registrar (Long produtoId) {
-        return produtoDao.criar(Produto.builder()
+
+        Produto produto = Produto.builder()
                 .id(produtoId)
-                .build());
+                .build();
+        Optional<Produto> produtoOptional  = produtoDao.findById(produto.getId());
+        return produtoOptional.orElseGet(() -> produtoDao.save(produto));
     }
 }

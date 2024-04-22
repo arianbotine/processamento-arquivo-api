@@ -5,28 +5,24 @@ import com.file.conversor.repository.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UsuarioService {
 
     @Autowired
     UsuarioDao usuarioDao;
 
-    public Usuario registrar (String registro) {
-        String usuarioId = registro.substring(1,10);
-        String nome = registro.substring(11,55).trim();
+    public Usuario registrar (Usuario usuario) {
 
-        Long usuarioIdint = converterStringParaLong(usuarioId);
-        return usuarioDao.criar(Usuario.builder()
-                .id(usuarioIdint)
-                .nome(nome)
-                .build());
-    }
-
-    public Long converterStringParaLong(String string) {
-        try {
-            return Long.parseLong(string);
-        } catch (NumberFormatException exception) {
-            throw new NumberFormatException("Falha ao converter em número o registro: " + string);
+        Optional<Usuario> usuarioOptional  = usuarioDao.findById(usuario.getId());
+        if (usuarioOptional.isPresent()) {
+            Usuario currentUsuario = usuarioOptional.get();
+            if (!currentUsuario.getNome().equals(usuario.getNome())) {
+                return currentUsuario;
+            }
+            usuario.setNome(usuario.getNome());
         }
+        return usuarioDao.save(usuario);
     }
 }

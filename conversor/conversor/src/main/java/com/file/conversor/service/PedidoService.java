@@ -18,20 +18,29 @@ public class PedidoService {
 
     @Transactional
     public Pedido registrar(Pedido pedido) {
-        return pedidoDao.criar(pedido);
+
+        Optional<Pedido> pedidoOptional =
+                pedidoDao.findById(pedido.getId());
+        if (pedidoOptional.isPresent()) {
+            Pedido currentPedido = pedidoOptional.get();
+            Float valorTotal = currentPedido.getValorTotal() + pedido.getValorTotal();
+            pedido.setValorTotal(valorTotal);
+        }
+
+        return pedidoDao.save(pedido);
     }
 
     public List<Pedido> buscarTodos () {
-        return pedidoDao.buscarTodos();
+        return pedidoDao.findAll();
     }
 
     public Pedido buscarPorId (Long pedidoId) {
-        Optional<Pedido> pedidoOptional = pedidoDao.buscarPorId(pedidoId);
+        Optional<Pedido> pedidoOptional = pedidoDao.findById(pedidoId);
         return pedidoOptional.orElse(null);
     }
 
     public List<Pedido> buscarPorDataCompra(Date dataInicial, Date dataFinal) {
-        return pedidoDao.buscarPorDataCompra(dataInicial,dataFinal);
+        return pedidoDao.findByDataCompraBetween(dataInicial,dataFinal);
     }
 
 }

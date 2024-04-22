@@ -1,5 +1,6 @@
 package com.file.conversor.repository;
 
+import com.file.conversor.repository.dao.PedidoProdutoDao;
 import com.file.conversor.repository.entity.Pedido;
 import com.file.conversor.repository.entity.PedidoProduto;
 import com.file.conversor.repository.entity.Produto;
@@ -21,10 +22,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
 @ActiveProfiles("test")
-class PedidoProdutoRepositoryTest {
+class PedidoProdutoDaoTest {
 
     @Autowired
-    PedidoProdutoRepository pedidoProdutoRepository;
+    PedidoProdutoDao pedidoProdutoDao;
 
     @Autowired
     EntityManager entityManager;
@@ -63,7 +64,7 @@ class PedidoProdutoRepositoryTest {
                 .valorTotal(100.20F).build();
         Produto produto = Produto.builder().id(25L).build();
 
-        Optional<PedidoProduto> resultado = this.pedidoProdutoRepository.findByPedidoAndProduto(pedido, produto);
+        Optional<PedidoProduto> resultado = this.pedidoProdutoDao.findByPedidoAndProduto(pedido, produto);
 
         assertTrue(resultado.isPresent());
     }
@@ -81,7 +82,7 @@ class PedidoProdutoRepositoryTest {
                 .valorTotal(100.20F).build();
         Produto produto = Produto.builder().id(25L).build();
 
-        Optional<PedidoProduto> resultado = this.pedidoProdutoRepository.findByPedidoAndProduto(pedido, produto);
+        Optional<PedidoProduto> resultado = this.pedidoProdutoDao.findByPedidoAndProduto(pedido, produto);
 
         assertTrue(resultado.isEmpty());
     }
@@ -98,7 +99,7 @@ class PedidoProdutoRepositoryTest {
                 .dataCompra(new Date())
                 .valorTotal(100.20F).build();
 
-        List<PedidoProduto> resultado = this.pedidoProdutoRepository.findByPedido(pedido);
+        List<PedidoProduto> resultado = this.pedidoProdutoDao.findByPedido(pedido);
 
         assertEquals(resultado.size(), 1);
         assertTrue(resultado.stream().findFirst().isPresent());
@@ -117,7 +118,7 @@ class PedidoProdutoRepositoryTest {
                 .dataCompra(new Date())
                 .valorTotal(100.20F).build();
 
-        List<PedidoProduto> resultado = this.pedidoProdutoRepository.findByPedido(pedido);
+        List<PedidoProduto> resultado = this.pedidoProdutoDao.findByPedido(pedido);
 
         assertEquals(resultado.size(), 0);
     }

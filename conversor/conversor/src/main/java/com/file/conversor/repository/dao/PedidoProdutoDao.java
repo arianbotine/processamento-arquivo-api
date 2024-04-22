@@ -1,27 +1,18 @@
 package com.file.conversor.repository.dao;
 
-import com.file.conversor.repository.PedidoProdutoRepository;
+import com.file.conversor.repository.entity.Pedido;
 import com.file.conversor.repository.entity.PedidoProduto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.file.conversor.repository.entity.Produto;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
-@Service
-public class PedidoProdutoDao {
+@Repository
+public interface PedidoProdutoDao extends JpaRepository<PedidoProduto, Long> {
 
-    @Autowired
-    private PedidoProdutoRepository pedidoProdutoRepository;
+    Optional<PedidoProduto> findByPedidoAndProduto(Pedido pedido, Produto produto);
 
-    public void criar(PedidoProduto pedidoProduto) {
-        Optional<PedidoProduto> pedidoProdutoValorOptional =
-                pedidoProdutoRepository.findByPedidoAndProduto(pedidoProduto.getPedido(), pedidoProduto.getProduto());
-        if (pedidoProdutoValorOptional.isPresent()) {
-            pedidoProduto = pedidoProdutoValorOptional.get();
-            Float valor = pedidoProduto.getValor() + pedidoProduto.getValor();
-            pedidoProduto.setValor(valor);
-        }
-        pedidoProdutoRepository.save(pedidoProduto);
-    }
-
+    List<PedidoProduto> findByPedido(Pedido pedido);
 }

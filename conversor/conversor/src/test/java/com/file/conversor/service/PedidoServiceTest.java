@@ -1,6 +1,5 @@
 package com.file.conversor.service;
 
-import com.file.conversor.repository.dao.PedidoDao;
 import com.file.conversor.repository.entity.Pedido;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

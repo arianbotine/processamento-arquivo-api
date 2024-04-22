@@ -29,26 +29,33 @@ public class RegistrarPedidoService {
     @Transactional
     public void registrar(String registro) throws ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("yyyyMMdd");
-        Usuario usuario = usuarioService.registrar(registro);
 
-        Long pedidoId = converterStringParaInteger(registro.substring(56,65));
-        Long produtoId = converterStringParaInteger(registro.substring(66,75));
-        Float valorTotal = Float.parseFloat(registro.substring(76,87));
+        Long usuarioId = converterStringParaLong(registro.substring(1,10));
+        String usuarioNome = registro.substring(11,55).trim();
+
+        Usuario usuario = usuarioService.registrar(Usuario.builder()
+                .id(usuarioId)
+                .nome(usuarioNome)
+                .build());
+
+        Long pedidoId = converterStringParaLong(registro.substring(56,65));
+        Long produtoId = converterStringParaLong(registro.substring(66,75));
+        Float pedidoValor = Float.parseFloat(registro.substring(76,87));
         Date dataCompra = formato.parse(registro.substring(87,95));
 
         Pedido pedido = pedidoService.registrar(Pedido.builder()
                 .id(pedidoId)
                 .usuario(usuario)
-                .valorTotal(valorTotal)
+                .valorTotal(pedidoValor)
                 .dataCompra(dataCompra)
                 .build());
 
         Produto produto = produtoService.registrar(produtoId);
-        pedidoProdutoService.registrar(pedido, produto, valorTotal);
+        pedidoProdutoService.registrar(pedido, produto, pedidoValor);
 
     }
 
-    public Long converterStringParaInteger(String string) {
+    public Long converterStringParaLong(String string) {
         try {
             return Long.parseLong(string);
         } catch (NumberFormatException exception) {
