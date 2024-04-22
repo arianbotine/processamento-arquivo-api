@@ -2,7 +2,11 @@ package com.file.conversor.service;
 
 import com.file.conversor.mother.UsuarioMother;
 import com.file.conversor.repository.dao.UsuarioDao;
+import com.file.conversor.repository.dto.PedidoDto;
+import com.file.conversor.repository.dto.ProdutoDto;
+import com.file.conversor.repository.dto.UsuarioDto;
 import com.file.conversor.repository.entity.Usuario;
+import com.file.conversor.repository.mapper.UsuarioDtoMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +15,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -26,6 +32,9 @@ class UsuarioServiceTest {
 
     @Mock
     UsuarioDao usuarioDaoMock;
+
+    @Mock
+    UsuarioDtoMapper usuarioDtoMapper;
 
     @BeforeEach
     void setup() {
@@ -83,4 +92,135 @@ class UsuarioServiceTest {
         verify(usuarioDaoMock).findById(usuario.getId());
         verify(usuarioDaoMock, never()).save(usuario);
     }
+
+    @Test
+    @DisplayName(value = "Deve retornar uma lista com todos os usuarios"
+            + " e seus respectivos pedidos quando nenhum filtro for informado")
+    void deveRetornarListaComTodosUsuarios() {
+
+        List<Usuario> usuarios = List.of(
+                UsuarioMother.simples().id(15L).build(),
+                UsuarioMother.simples().id(16L).build(),
+                UsuarioMother.simples().id(17L).build());
+
+        when(usuarioDaoMock.findAll()).thenReturn(usuarios);
+
+        List<Usuario> usuariosRetornados = usuarioService.buscarTodos();
+
+        assertTrue(Objects.nonNull(usuariosRetornados));
+        assertEquals(usuariosRetornados.size(), 3);
+
+        verify(usuarioDaoMock, times(1)).findAll();
+    }
+
+    @Test
+    @DisplayName(value = "Deve retornar uma lista de usuario vazia quando"
+            + " filtrado por pedido e o pedido for inexistente.")
+    void deveRetornarListaVaziaQuandoNenhumPedidoExistir() {
+        List<Usuario> usuarios = List.of();
+
+        when(usuarioDaoMock.findAll()).thenReturn(usuarios);
+
+        List<Usuario> pedidosRetornados = usuarioService.buscarTodos();
+
+        assertTrue(Objects.nonNull(pedidosRetornados));
+        assertEquals(pedidosRetornados.size(), 0);
+
+        verify(usuarioDaoMock, times(1)).findAll();
+    }
+
+    @Test
+    @DisplayName(value = "Deve retornar um único usuário quando filtrado por pedido")
+    void deveRetornarUmUnicoUsuarioQuandoConsultadoPorPedido() {
+        Long pedidoId = 15L;
+        Usuario usuario = UsuarioMother.simples().build();
+
+        when(usuarioDaoMock.findUsuarioByPedido(pedidoId)).thenReturn(usuario);
+
+        Usuario usuarioRetornado = usuarioService.buscarPorPedidoId(pedidoId);
+
+        assertTrue(Objects.nonNull(usuarioRetornado));
+
+        verify(usuarioDaoMock, times(1)).findUsuarioByPedido(pedidoId);
+    }
+
+    @Test
+    @DisplayName(value = "Deve nulo quando consultado por pedido inexistente")
+    void deveRetornarNuloQuandoPedidoInexistente() {
+        Long pedidoId = 15L;
+
+        when(usuarioDaoMock.findUsuarioByPedido(pedidoId)).thenReturn(null);
+
+        Usuario usuarioRetornado = usuarioService.buscarPorPedidoId(pedidoId);
+
+        assertTrue(Objects.isNull(usuarioRetornado));
+
+        verify(usuarioDaoMock, times(1)).findUsuarioByPedido(pedidoId);
+    }
+
+    @Test
+    @DisplayName(value = "Deve retornar lista de usuarios e seus respectivos pedidos quando filtrado por período")
+    void deveRetornarListaUsuarioQuandoFiltradoPorPeriodo() {
+        List<Usuario> usuarios = List.of(
+                UsuarioMother.simples().id(15L).build(),
+                UsuarioMother.simples().id(16L).build(),
+                UsuarioMother.simples().id(17L).build());
+
+        Date dataInicial = new Date(2024, 3, 20);
+        Date dataFinal = new Date(2024, 3, 25);
+        when(usuarioDaoMock.findUsuarioByDataCompraPedidoBetween(dataInicial, dataFinal)).thenReturn(usuarios);
+
+        List<Usuario> usuariosRetornados = usuarioService.buscarPorDataCompraPedido(dataInicial, dataFinal);
+
+        assertTrue(Objects.nonNull(usuariosRetornados));
+        assertEquals(usuariosRetornados.size(), 3);
+
+        verify(usuarioDaoMock, times(1)).findUsuarioByDataCompraPedidoBetween(dataInicial, dataFinal);
+    }
+
+    @Test
+    @DisplayName(value = "Deve retornar lista de usuarios e seus respectivos pedidos quando filtrado por período e pedido")
+    void deveRetornarListaUsuarioQuandoFiltradoPorPeriodoAndPedido() {
+        Long pedidoId = 54L;
+        List<Usuario> usuarios = List.of(
+                UsuarioMother.simples().id(15L).build(),
+                UsuarioMother.simples().id(16L).build(),
+                UsuarioMother.simples().id(17L).build());
+
+        Date dataInicial = new Date(2024, 3, 20);
+        Date dataFinal = new Date(2024, 3, 25);
+        when(usuarioDaoMock.findUsuarioByPedidoAndDataCompraPedidoBetween(pedidoId, dataInicial, dataFinal)).thenReturn(usuarios);
+
+        List<Usuario> usuariosRetornados =
+                usuarioService.buscarPorDataCompraPedidoAndPedido(pedidoId, dataInicial, dataFinal);
+
+        assertTrue(Objects.nonNull(usuariosRetornados));
+        assertEquals(usuariosRetornados.size(), 3);
+
+        verify(usuarioDaoMock, times(1)).findUsuarioByPedidoAndDataCompraPedidoBetween(pedidoId, dataInicial, dataFinal);
+    }
+
+    @Test
+    @DisplayName(value = "Deve converter uma lista da entidade de usuário em uma lista da dto de usuario")
+    void deveConverterUmaListaDeUsuarioEmListaDto() {
+        List<Usuario> usuarios = List.of(
+                UsuarioMother.simples().id(15L).build(),
+                UsuarioMother.simples().id(16L).build(),
+                UsuarioMother.simples().id(17L).build());
+        List<UsuarioDto> usuarioDtos = List.of(
+                UsuarioDto.builder().id(15L).build(),
+                UsuarioDto.builder().id(16L).build(),
+                UsuarioDto.builder().id(17L).build());
+
+        when(usuarioDtoMapper.toUsuarioDtoList(usuarios)).thenReturn(usuarioDtos);
+
+        List<UsuarioDto> usuariosRetornados =
+                usuarioService.toListDto(usuarios);
+
+        assertTrue(Objects.nonNull(usuariosRetornados));
+        assertEquals(usuariosRetornados.size(), 3);
+
+        verify(usuarioDtoMapper, times(1)).toUsuarioDtoList(usuarios);
+    }
+
 }

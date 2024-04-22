@@ -3,6 +3,8 @@ package com.file.conversor.mother;
 import com.file.conversor.repository.entity.Usuario;
 import com.file.conversor.repository.entity.Usuario.UsuarioBuilder;
 
+import java.util.List;
+
 public class UsuarioMother {
 
     public static UsuarioBuilder simples() {

@@ -34,8 +34,8 @@ public class UsuarioService {
         return usuarioDao.save(usuario);
     }
 
-    public Usuario buscarPorPedidoId(Long pedido) {
-        return usuarioDao.findUsuarioByPedido(pedido);
+    public Usuario buscarPorPedidoId(Long pedidoId) {
+        return usuarioDao.findUsuarioByPedido(pedidoId);
     }
 
     public List<Usuario> buscarPorDataCompraPedido(Date dataInicial, Date dataFinal) {
