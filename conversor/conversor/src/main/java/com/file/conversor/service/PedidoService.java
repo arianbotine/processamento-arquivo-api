@@ -24,7 +24,8 @@ public class PedidoService {
         if (pedidoOptional.isPresent()) {
             Pedido currentPedido = pedidoOptional.get();
             Float valorTotal = currentPedido.getValorTotal() + pedido.getValorTotal();
-            pedido.setValorTotal(valorTotal);
+            currentPedido.setValorTotal(valorTotal);
+            pedido = currentPedido;
         }
 
         return pedidoDao.save(pedido);

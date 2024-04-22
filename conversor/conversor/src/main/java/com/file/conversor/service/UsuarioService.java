@@ -15,13 +15,14 @@ public class UsuarioService {
 
     public Usuario registrar (Usuario usuario) {
 
-        Optional<Usuario> usuarioOptional  = usuarioDao.findById(usuario.getId());
+        Optional<Usuario> usuarioOptional = usuarioDao.findById(usuario.getId());
         if (usuarioOptional.isPresent()) {
             Usuario currentUsuario = usuarioOptional.get();
-            if (!currentUsuario.getNome().equals(usuario.getNome())) {
+            if (currentUsuario.getNome().equals(usuario.getNome())) {
                 return currentUsuario;
             }
-            usuario.setNome(usuario.getNome());
+            currentUsuario.setNome(usuario.getNome());
+            usuario = currentUsuario;
         }
         return usuarioDao.save(usuario);
     }

@@ -50,7 +50,9 @@ public class RegistrarPedidoService {
                 .dataCompra(dataCompra)
                 .build());
 
-        Produto produto = produtoService.registrar(produtoId);
+        Produto produto = produtoService.registrar(Produto.builder()
+                .id(produtoId)
+                .build());
         pedidoProdutoService.registrar(pedido, produto, pedidoValor);
 
     }

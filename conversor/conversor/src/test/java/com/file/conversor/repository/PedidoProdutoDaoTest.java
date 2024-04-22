@@ -1,5 +1,9 @@
 package com.file.conversor.repository;
 
+import com.file.conversor.mother.PedidoMother;
+import com.file.conversor.mother.PedidoProdutoMother;
+import com.file.conversor.mother.ProdutoMother;
+import com.file.conversor.mother.UsuarioMother;
 import com.file.conversor.repository.dao.PedidoProdutoDao;
 import com.file.conversor.repository.entity.Pedido;
 import com.file.conversor.repository.entity.PedidoProduto;
@@ -32,37 +36,23 @@ class PedidoProdutoDaoTest {
 
     @BeforeEach
     public void criarRegistros() {
-        Usuario usuario = Usuario.builder()
-                .id(15L)
-                .nome("Bobbie Batz").build();
-        Pedido pedido = Pedido.builder()
-                .id(78L)
-                .usuario(usuario)
-                .dataCompra(new Date())
-                .valorTotal(100.20F).build();
-        Produto produto = Produto.builder().id(25L).build();
+        Usuario usuario = UsuarioMother.simples().build();
+        Pedido pedido = PedidoMother.simples().build();
+        Produto produto = ProdutoMother.simples().build();
 
         this.criarUsuario(usuario);
         this.criarProduto(produto);
         this.criarPedido(pedido);
-        this.criarPedidoProduto(PedidoProduto.builder()
-                .pedido(pedido)
-                .produto(Produto.builder().id(25L).build())
+        this.criarPedidoProduto(PedidoProdutoMother
+                .semPersistir()
                 .build());
     }
 
     @Test
     @DisplayName(value = "Deve retornar registro quando pesquisar por pedido e produto que existem persistidos")
     void deveRetornarRegistroPorPedidoProdutoExistente() {
-        Usuario usuario = Usuario.builder()
-                .id(15L)
-                .nome("Bobbie Batz").build();
-        Pedido pedido = Pedido.builder()
-                .id(78L)
-                .usuario(usuario)
-                .dataCompra(new Date())
-                .valorTotal(100.20F).build();
-        Produto produto = Produto.builder().id(25L).build();
+        Pedido pedido = PedidoMother.simples().build();
+        Produto produto = ProdutoMother.simples().build();
 
         Optional<PedidoProduto> resultado = this.pedidoProdutoDao.findByPedidoAndProduto(pedido, produto);
 
@@ -72,14 +62,7 @@ class PedidoProdutoDaoTest {
     @Test
     @DisplayName(value = "Não deve retornar registro quando pesquisar por pedido e produto que existem persistidos")
     void naoDeveRetornarRegistroPorPedidoProdutoNaoExistentes() {
-        Usuario usuario = Usuario.builder()
-                .id(15L)
-                .nome("Bobbie Batz").build();
-        Pedido pedido = Pedido.builder()
-                .id(79L)
-                .usuario(usuario)
-                .dataCompra(new Date())
-                .valorTotal(100.20F).build();
+        Pedido pedido = PedidoMother.simples().build();
         Produto produto = Produto.builder().id(25L).build();
 
         Optional<PedidoProduto> resultado = this.pedidoProdutoDao.findByPedidoAndProduto(pedido, produto);
@@ -90,14 +73,7 @@ class PedidoProdutoDaoTest {
     @Test
     @DisplayName(value = "Deve retornar registro por pedido existente")
     void deveRetornarRegistroPorPedidoExistente() {
-        Usuario usuario = Usuario.builder()
-                .id(15L)
-                .nome("Bobbie Batz").build();
-        Pedido pedido = Pedido.builder()
-                .id(78L)
-                .usuario(usuario)
-                .dataCompra(new Date())
-                .valorTotal(100.20F).build();
+        Pedido pedido = PedidoMother.simples().build();
 
         List<PedidoProduto> resultado = this.pedidoProdutoDao.findByPedido(pedido);
 
@@ -109,14 +85,7 @@ class PedidoProdutoDaoTest {
     @Test
     @DisplayName(value = "Não deve retornar registro por pedido não existente")
     void naoDeveRetornarRegistroPorPedidoNaoExistente() {
-        Usuario usuario = Usuario.builder()
-                .id(15L)
-                .nome("Bobbie Batz").build();
-        Pedido pedido = Pedido.builder()
-                .id(79L)
-                .usuario(usuario)
-                .dataCompra(new Date())
-                .valorTotal(100.20F).build();
+        Pedido pedido = PedidoMother.simples().build();
 
         List<PedidoProduto> resultado = this.pedidoProdutoDao.findByPedido(pedido);
 

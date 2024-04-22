@@ -13,11 +13,8 @@ public class ProdutoService {
     @Autowired
     ProdutoDao produtoDao;
 
-    public Produto registrar (Long produtoId) {
+    public Produto registrar (Produto produto) {
 
-        Produto produto = Produto.builder()
-                .id(produtoId)
-                .build();
         Optional<Produto> produtoOptional  = produtoDao.findById(produto.getId());
         return produtoOptional.orElseGet(() -> produtoDao.save(produto));
     }
