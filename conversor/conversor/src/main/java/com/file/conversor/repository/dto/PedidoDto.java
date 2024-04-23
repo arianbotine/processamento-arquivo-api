@@ -18,7 +18,7 @@ public class PedidoDto {
     private Long id;
 
     @JsonProperty("total")
-    private Float valorTotal;
+    private String valorTotal;
 
     @JsonProperty("date")
     private String dataCompra;

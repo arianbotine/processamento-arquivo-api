@@ -3,6 +3,7 @@ package com.file.conversor.resource;
 import com.file.conversor.repository.dto.BuscaPedidoRequestDto;
 import com.file.conversor.repository.dto.RegistraPedidoResponseDto;
 import com.file.conversor.repository.dto.UsuarioDto;
+import com.file.conversor.repository.entity.Usuario;
 import com.file.conversor.service.BuscaPedidoService;
 import com.file.conversor.service.RegistraPedidoService;
 import com.file.conversor.service.validator.ArquivoValidator;
@@ -93,13 +94,23 @@ public class PedidosResource {
     public ResponseEntity<List<UsuarioDto>> buscarPedidos(
             @RequestParam(value = "orderId", required = false) Long pedidoId,
             @RequestParam(value = "startDate", required = false) String dataInicial,
-            @RequestParam(value = "endDate", required = false) String dataFinal) throws ParseException {
+            @RequestParam(value = "endDate", required = false) String dataFinal,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) throws ParseException {
 
-        return ResponseEntity.ok(buscaPedidoService.buscar(
+        List<UsuarioDto> usuarios = buscaPedidoService.buscar(
                 BuscaPedidoRequestDto.builder()
                         .pedidoId(pedidoId)
                         .dataInicial(dataInicial)
                         .dataFinal(dataFinal)
-                        .build()));
+                        .page(page)
+                        .size(size)
+                        .build());
+
+        if (!usuarios.isEmpty()) {
+            return ResponseEntity.ok(usuarios);
+        } else {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(usuarios);
+        }
     }
 }

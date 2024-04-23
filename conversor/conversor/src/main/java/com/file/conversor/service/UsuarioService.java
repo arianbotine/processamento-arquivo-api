@@ -2,9 +2,11 @@ package com.file.conversor.service;
 
 import com.file.conversor.repository.dao.UsuarioDao;
 import com.file.conversor.repository.dto.UsuarioDto;
-import com.file.conversor.service.mapper.UsuarioDtoMapper;
 import com.file.conversor.repository.entity.Usuario;
+import com.file.conversor.service.mapper.UsuarioDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,7 +22,7 @@ public class UsuarioService {
     @Autowired
     UsuarioDtoMapper usuarioDtoMapper;
 
-    public Usuario registrar (Usuario usuario) {
+    public Usuario registrar(Usuario usuario) {
 
         Optional<Usuario> usuarioOptional = usuarioDao.findById(usuario.getId());
         if (usuarioOptional.isPresent()) {
@@ -46,8 +48,8 @@ public class UsuarioService {
         return usuarioDao.findUsuarioByPedidoAndDataCompraPedidoBetween(pedidoId, dataInicial, dataFinal);
     }
 
-    public List<Usuario> buscarTodos() {
-        return usuarioDao.findAll();
+    public List<Usuario> buscarTodos(Pageable pageable) {
+        return usuarioDao.findAll(pageable).getContent();
     }
 
     public List<UsuarioDto> toListDto(List<Usuario> usuarios) {

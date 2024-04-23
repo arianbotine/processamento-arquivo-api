@@ -12,4 +12,11 @@ public class UsuarioMother {
                 .id(15L)
                 .nome("Bobbie Batz");
     }
+
+    public static UsuarioBuilder comUmPedido() {
+        return Usuario.builder()
+                .id(15L)
+                .nome("Bobbie Batz")
+                .pedidos(List.of(PedidoMother.comUmProduto().build()));
+    }
 }

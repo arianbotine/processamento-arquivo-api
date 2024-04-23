@@ -3,6 +3,8 @@ package com.file.conversor.service;
 import com.file.conversor.repository.dto.*;
 import com.file.conversor.repository.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -17,16 +19,11 @@ public class BuscaPedidoService {
     @Autowired
     UsuarioService usuarioService;
 
-    public List<UsuarioDto> buscar (BuscaPedidoRequestDto buscaPedidoRequestDto) throws ParseException {
+    public List<UsuarioDto> buscar(BuscaPedidoRequestDto buscaPedidoRequestDto) throws ParseException {
 
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         List<Usuario> usuarios = new java.util.ArrayList<>(List.of());
-        if (Objects.isNull(buscaPedidoRequestDto.getPedidoId())
-                && Objects.isNull(buscaPedidoRequestDto.getDataInicial())
-                && Objects.isNull(buscaPedidoRequestDto.getDataFinal())) {
-
-            usuarios = usuarioService.buscarTodos();
-        } else if (Objects.nonNull(buscaPedidoRequestDto.getPedidoId())
+        if (Objects.nonNull(buscaPedidoRequestDto.getPedidoId())
                 && Objects.nonNull(buscaPedidoRequestDto.getDataInicial())
                 && Objects.nonNull(buscaPedidoRequestDto.getDataFinal())) {
 
@@ -45,7 +42,14 @@ public class BuscaPedidoService {
         } else if (Objects.nonNull(buscaPedidoRequestDto.getPedidoId())) {
 
             Usuario usuario = usuarioService.buscarPorPedidoId(buscaPedidoRequestDto.getPedidoId());
-            usuarios = List.of(usuario);
+            if (Objects.nonNull(usuario)) {
+                usuarios = List.of(usuario);
+            }
+        } else {
+            Pageable pageable = PageRequest.of(
+                    buscaPedidoRequestDto.getPage(),
+                    buscaPedidoRequestDto.getSize());
+            usuarios = usuarioService.buscarTodos(pageable);
         }
 
         return usuarioService.toListDto(usuarios);

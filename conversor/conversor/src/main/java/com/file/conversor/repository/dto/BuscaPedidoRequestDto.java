@@ -16,4 +16,8 @@ public class BuscaPedidoRequestDto {
     private String dataInicial;
 
     private String dataFinal;
+
+    private int page = 0;
+
+    private int size = 10;
 }

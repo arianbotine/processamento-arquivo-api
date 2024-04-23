@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Service
 public class RegistroPedidoDtoConverter {
+
     public RegistroPedidoDto toDto(String registro) throws ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("yyyyMMdd");
 

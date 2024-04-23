@@ -12,6 +12,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.Date;
 import java.util.List;
@@ -100,15 +104,17 @@ class UsuarioServiceTest {
                 UsuarioMother.simples().id(15L).build(),
                 UsuarioMother.simples().id(16L).build(),
                 UsuarioMother.simples().id(17L).build());
+        Pageable pageable = Pageable.unpaged();
+        Page<Usuario> page = new PageImpl<>(usuarios);
 
-        when(usuarioDaoMock.findAll()).thenReturn(usuarios);
+        when(usuarioDaoMock.findAll(pageable)).thenReturn(page);
 
-        List<Usuario> usuariosRetornados = usuarioService.buscarTodos();
+        List<Usuario> usuariosRetornados = usuarioService.buscarTodos(pageable);
 
         assertTrue(Objects.nonNull(usuariosRetornados));
         assertEquals(usuariosRetornados.size(), 3);
 
-        verify(usuarioDaoMock, times(1)).findAll();
+        verify(usuarioDaoMock, times(1)).findAll(pageable);
     }
 
     @Test
@@ -116,15 +122,17 @@ class UsuarioServiceTest {
             + " filtrado por pedido e o pedido for inexistente.")
     void deveRetornarListaVaziaQuandoNenhumPedidoExistir() {
         List<Usuario> usuarios = List.of();
+        Pageable pageable = Pageable.unpaged();
+        Page<Usuario> page = new PageImpl<>(usuarios);
 
-        when(usuarioDaoMock.findAll()).thenReturn(usuarios);
+        when(usuarioDaoMock.findAll(pageable)).thenReturn(page);
 
-        List<Usuario> pedidosRetornados = usuarioService.buscarTodos();
+        List<Usuario> pedidosRetornados = usuarioService.buscarTodos(pageable);
 
         assertTrue(Objects.nonNull(pedidosRetornados));
         assertEquals(pedidosRetornados.size(), 0);
 
-        verify(usuarioDaoMock, times(1)).findAll();
+        verify(usuarioDaoMock, times(1)).findAll(pageable);
     }
 
     @Test
@@ -173,7 +181,9 @@ class UsuarioServiceTest {
         assertTrue(Objects.nonNull(usuariosRetornados));
         assertEquals(usuariosRetornados.size(), 3);
 
-        verify(usuarioDaoMock, times(1)).findUsuarioByDataCompraPedidoBetween(dataInicial, dataFinal);
+        verify(usuarioDaoMock, times(1)).findUsuarioByDataCompraPedidoBetween(
+                dataInicial,
+                dataFinal);
     }
 
     @Test
