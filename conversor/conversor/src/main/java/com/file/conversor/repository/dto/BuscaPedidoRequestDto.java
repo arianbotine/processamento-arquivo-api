@@ -17,7 +17,9 @@ public class BuscaPedidoRequestDto {
 
     private String dataFinal;
 
+    @Builder.Default
     private int page = 0;
 
+    @Builder.Default
     private int size = 10;
 }

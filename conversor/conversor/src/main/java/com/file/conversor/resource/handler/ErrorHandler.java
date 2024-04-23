@@ -12,7 +12,10 @@ import java.text.ParseException;
 @RestControllerAdvice
 public class ErrorHandler {
 
-    @ExceptionHandler({ParseException.class, MethodArgumentTypeMismatchException.class})
+    @ExceptionHandler({
+            ParseException.class,
+            MethodArgumentTypeMismatchException.class,
+            IllegalArgumentException.class})
     public ResponseEntity<ErroResponseDto> handleInvalidDataProvided(Exception ex) {
         ErroResponseDto errorResponse = ErroResponseDto.builder()
                 .status(HttpStatus.BAD_REQUEST)
