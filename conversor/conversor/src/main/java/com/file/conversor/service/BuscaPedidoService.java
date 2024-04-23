@@ -1,6 +1,7 @@
 package com.file.conversor.service;
 
-import com.file.conversor.repository.dto.*;
+import com.file.conversor.repository.dto.BuscaPedidoRequestDto;
+import com.file.conversor.repository.dto.UsuarioDto;
 import com.file.conversor.repository.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;

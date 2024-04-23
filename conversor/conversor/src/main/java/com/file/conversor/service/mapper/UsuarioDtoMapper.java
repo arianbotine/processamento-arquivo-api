@@ -26,17 +26,19 @@ public class UsuarioDtoMapper {
                 .pedidos(pedidos)
                 .build();
     }
+
     SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
     private PedidoDto toPedidoDto(Pedido pedido) {
         List<ProdutoDto> produtos = pedido.getPedidoProdutos().stream()
                 .map(pedidoProduto -> ProdutoDto.builder()
                         .id(pedidoProduto.getProduto().getId())
-                        .valor(String.format("%.2f", pedidoProduto.getValor()).replace(',','.'))
+                        .valor(String.format("%.2f", pedidoProduto.getValor()).replace(',', '.'))
                         .build())
                 .collect(Collectors.toList());
         return PedidoDto.builder()
                 .id(pedido.getId())
-                .valorTotal(String.format("%.2f", pedido.getValorTotal()).replace(',','.'))
+                .valorTotal(String.format("%.2f", pedido.getValorTotal()).replace(',', '.'))
                 .dataCompra(formato.format(pedido.getDataCompra()))
                 .produtos(produtos)
                 .build();

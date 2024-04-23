@@ -33,7 +33,7 @@ class ArquivoValidatorTest {
 
         String mensagemEsperada = "File is empty";
         String mensagemRetornada = exception.getMessage();
-        assert(mensagemRetornada.contains(mensagemEsperada));
+        assert (mensagemRetornada.contains(mensagemEsperada));
     }
 
     @Test
@@ -47,7 +47,7 @@ class ArquivoValidatorTest {
 
         String mensagemEsperada = "File type is incorrect. Only .txt is allowed";
         String mensagemRetornada = exception.getMessage();
-        assert(mensagemRetornada.contains(mensagemEsperada));
+        assert (mensagemRetornada.contains(mensagemEsperada));
     }
 
     @Test

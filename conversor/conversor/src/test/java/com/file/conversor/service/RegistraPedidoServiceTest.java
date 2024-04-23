@@ -76,7 +76,7 @@ class RegistraPedidoServiceTest {
 
     @Test
     @DisplayName("Deve lançar erro quando registro não tiver 95 caracteres")
-    public void deveLancarErroQuandoRegistroNaoValido(){
+    public void deveLancarErroQuandoRegistroNaoValido() {
         String registroInvalido = "  ";
 
         IllegalStateException exception = assertThrows(IllegalStateException.class, () -> {
@@ -85,7 +85,7 @@ class RegistraPedidoServiceTest {
 
         String mensagemEsperada = "Invalid format on the line";
         String mensagemRetornada = exception.getMessage();
-        assert(mensagemRetornada.contains(mensagemEsperada));
+        assert (mensagemRetornada.contains(mensagemEsperada));
     }
 
 }

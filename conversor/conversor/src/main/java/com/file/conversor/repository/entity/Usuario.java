@@ -2,8 +2,6 @@ package com.file.conversor.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.SQLRestriction;
-import org.hibernate.annotations.Where;
 
 import java.util.List;
 
@@ -13,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @Entity
-@Table(name ="usuario")
+@Table(name = "usuario")
 public class Usuario {
 
     @Id

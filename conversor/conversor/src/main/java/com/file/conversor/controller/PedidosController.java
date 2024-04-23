@@ -57,7 +57,7 @@ public class PedidosController {
 
 
             String linha;
-            while  ((linha = reader.readLine()) != null) {
+            while ((linha = reader.readLine()) != null) {
                 contador = contador + 1;
                 registraPedidoService.registrar(linha);
             }

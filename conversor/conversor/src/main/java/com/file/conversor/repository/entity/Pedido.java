@@ -2,7 +2,6 @@ package com.file.conversor.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Where;
 
 import java.util.Date;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @Entity
-@Table(name ="pedido")
+@Table(name = "pedido")
 public class Pedido {
 
     @Id

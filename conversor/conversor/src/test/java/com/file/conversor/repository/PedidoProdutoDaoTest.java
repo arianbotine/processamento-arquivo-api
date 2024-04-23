@@ -44,8 +44,8 @@ class PedidoProdutoDaoTest {
         this.criarPedido(pedido);
         this.criarPedidoProduto(PedidoProdutoMother
                 .semPersistir()
-                        .pedido(pedido)
-                        .produto(produto)
+                .pedido(pedido)
+                .produto(produto)
                 .build());
     }
 

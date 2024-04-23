@@ -1,9 +1,7 @@
 package com.file.conversor.service.converter;
 
-import com.file.conversor.mother.ProdutoMother;
 import com.file.conversor.mother.RegistroPedidoDtoMother;
 import com.file.conversor.repository.dto.RegistroPedidoDto;
-import com.file.conversor.repository.entity.Produto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,13 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Objects;
-import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegistroPedidoDtoConverterTest {
 

@@ -5,7 +5,6 @@ import com.file.conversor.repository.dto.UsuarioDto;
 import com.file.conversor.repository.entity.Usuario;
 import com.file.conversor.service.mapper.UsuarioDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 

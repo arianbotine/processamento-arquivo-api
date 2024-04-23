@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @Entity
-@Table(name ="pedido_produto")
+@Table(name = "pedido_produto")
 public class PedidoProduto {
 
     @Id

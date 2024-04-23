@@ -13,7 +13,7 @@ public class ArquivoMother implements MultipartFile {
     private final String contentType;
     private final byte[] content;
 
-    public ArquivoMother (String name, String originalFilename, String contentType, byte[] content) {
+    public ArquivoMother(String name, String originalFilename, String contentType, byte[] content) {
         this.name = name;
         this.originalFilename = originalFilename;
         this.contentType = contentType;

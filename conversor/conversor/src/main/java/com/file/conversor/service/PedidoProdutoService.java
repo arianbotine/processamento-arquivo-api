@@ -13,7 +13,7 @@ public class PedidoProdutoService {
     @Autowired
     PedidoProdutoDao pedidoProdutoDao;
 
-    public void registrar (PedidoProduto pedidoProduto) {
+    public void registrar(PedidoProduto pedidoProduto) {
 
         Optional<PedidoProduto> pedidoProdutoValorOptional =
                 pedidoProdutoDao.findByPedidoAndProduto(

@@ -13,9 +13,9 @@ public class ProdutoService {
     @Autowired
     ProdutoDao produtoDao;
 
-    public Produto registrar (Produto produto) {
+    public Produto registrar(Produto produto) {
 
-        Optional<Produto> produtoOptional  = produtoDao.findById(produto.getId());
+        Optional<Produto> produtoOptional = produtoDao.findById(produto.getId());
         return produtoOptional.orElseGet(() -> produtoDao.save(produto));
     }
 }
