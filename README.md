@@ -5,10 +5,14 @@ Esse projeto tem como objetivo estudar conceitos de API REST utilizando Java Spr
 ## Índice
 
 - [Contexto](#contexto)
-- [Instalação](#instalação)
-- [Uso](#uso)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+    - [Entrada de dados](#entrada-de-dados)
+    - [Saída de dados](#saída-de-dados)
+- [Tecnologias](#tecnologias)
+- [Solução](#solução)
+    - [Modelagem conceitual](#modelagem-conceitual)
+    - [Modelagem lógica](#modelagem-lógica)
+    - [Modelagem física](#modelagem-física)
+- [Arquitetura](#arquitetura)
 
 # Contexto
 
@@ -109,21 +113,23 @@ Segue um detalhamento de como ficou a modelagem dos dados do projeto:
 
 ![modelagem conceitual](assets/db_modelo_conceitual.jpg)
 
-### Modelagem lógico
+### Modelagem lógica
 
 ![modelagem logica](assets/db_modelo_logico.jpg)
 
-### Modelagem físico
+### Modelagem física
 
 ![modelagem fisica](assets/db_modelo_fisico.jpg)
 
 
-## Instalação
+## Arquitetura
 
-Descreva aqui como instalar o projeto localmente ou como usá-lo como uma dependência em outro projeto. Você pode incluir comandos de instalação, requisitos de sistema ou quaisquer outras instruções relevantes.
+O projeto foi desenvolvido utilizando uma arquitetura de camadas para separar as regras de negócio do tratamento de dados.
 
-## Links Úteis
+Pacotes:
 
-- [Documento de Requisitos](/caminho/para/documento-de-requisitos.pdf)
-- [Guia do Usuário](/caminho/para/guia-do-usuario.pdf)
-- [Apresentação](/caminho/para/apresentacao.pptx)
+service: regras de negócio e validações
+repository: tratamento de dados
+controller: controladores de api
+
+![alt text](assets/pacotes.png)
