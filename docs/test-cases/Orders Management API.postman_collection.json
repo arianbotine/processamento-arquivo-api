@@ -1,0 +1,3359 @@
+{
+	"info": {
+		"_postman_id": "00283e30-19a9-4ac5-9cd3-10c2ecbd302a",
+		"name": "Orders Management API",
+		"description": "API developed to assist in Orders Management\n\nThe endpoints are available on **localhost:8080/{endpoint_path}**",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34446051"
+	},
+	"item": [
+		{
+			"name": "POST/orders",
+			"item": [
+				{
+					"name": "Success",
+					"item": [
+						{
+							"name": "201 created - good .txt file",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"description": "use the file (data_2.txt)",
+											"type": "file",
+											"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/success-files/data_2.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/orders",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "201 created - good .txt file",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (data_2.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/success-files/data_2.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 19:22:58 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"CREATED\",\n    \"message\": \"File upload completed. 3870 lines read\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Expected Errors",
+					"item": [
+						{
+							"name": "UserID",
+							"item": [
+								{
+									"name": "400 error - USER as string",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (usuario_string.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/usuario_string.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error - USER as string",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (usuario_string.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/usuario_string.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:25:35 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"For input string: \\\"TESTEEEEEE\\\"\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  USER less than 10 int digits",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (usuario_less_than_10.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/usuario_less_than_10.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": null,
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  USER less than 10 int digits",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (usuario_less_than_10.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/usuario_less_than_10.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													],
+													"query": [
+														{
+															"key": null,
+															"value": null,
+															"disabled": true
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:26:27 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  USER more than 10 int digits",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (usuario_more_than_10.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/usuario_more_than_10.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": null,
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  USER more than 10 int digits",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (usuario_more_than_10.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/usuario_more_than_10.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													],
+													"query": [
+														{
+															"key": null,
+															"value": null,
+															"disabled": true
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:27:09 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Name",
+							"item": [
+								{
+									"name": "400 error -  NAME less than 45 chars",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (nome_less_than_45.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/nome_less_than_45.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  NAME less than 45 chars",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (nome_less_than_45.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/nome_less_than_45.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:40:41 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  NAME more than 45 chars",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (nome_more_than_45.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/nome_more_than_45.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  NAME more than 45 chars",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (nome_more_than_45.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/nome_more_than_45.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:41:36 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "OrderID",
+							"item": [
+								{
+									"name": "400 error -  ORDER as string",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (pedido_string.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/pedido_string.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  ORDER as string",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (pedido_string.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/pedido_string.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:42:07 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"For input string: \\\"TESTEEEEEE\\\"\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  ORDER less than 10 int digits",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (pedido_less_than_10.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/pedido_less_than_10.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  ORDER less than 10 int digits",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (pedido_less_than_10.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/pedido_less_than_10.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:42:36 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  ORDER more than 10 int digits",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (pedido_more_than_10.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/pedido_more_than_10.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  ORDER more than 10 int digits",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (pedido_more_than_10.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/pedido_more_than_10.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:43:16 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "ProductID",
+							"item": [
+								{
+									"name": "400 error -  PRODUCT as string",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (produto_string.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/produto_string.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  PRODUCT as string",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (produto_string.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/produto_string.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:47:08 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"For input string: \\\"TESTEEEEEE\\\"\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  PRODUCT less than 10 int digits",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (produto_less_than_10.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/produto_less_than_10.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  PRODUCT less than 10 int digits",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (produto_less_than_10.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/produto_less_than_10.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:47:15 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  PRODUCT more than 10 int digits",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (produto_more_than_10.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/produto_more_than_10.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  PRODUCT more than 10 int digits",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (produto_more_than_10.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/produto_more_than_10.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:47:21 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 2\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "ProductAmount",
+							"item": [
+								{
+									"name": "400 error -  PRODUCT_AMOUNT as string",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (valor_string.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/valor_string.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  PRODUCT_AMOUNT as string",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (valor_string.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/valor_string.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:49:16 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"For input string: \\\"TESTEEEEEEEE\\\"\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  PRODUCT_AMOUNT less than 12 digits",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (valor_less_than_12.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/valor_less_than_12.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  PRODUCT_AMOUNT less than 12 digits",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (valor_less_than_12.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/valor_less_than_12.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:49:23 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  PRODUCT_AMOUNT more than 12 digits",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (valor_more_than_12.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/valor_more_than_12.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  PRODUCT_AMOUNT more than 12 digits",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (valor_more_than_12.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/valor_more_than_12.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:49:29 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Date",
+							"item": [
+								{
+									"name": "400 error -  DATE as string",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (data_string.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/data_string.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  DATE as string",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (data_string.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/data_string.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:51:21 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Unparseable date: \\\"TESTEEEE\\\"\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  DATE less than 8 int digits",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (data_less_than_8.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/data_less_than_8.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  DATE less than 8 int digits",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (data_less_than_8.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/data_less_than_8.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:51:28 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 error -  DATE more than 8 int digits",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (data_more_than_8.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/data_more_than_8.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 error -  DATE more than 8 int digits",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "file",
+															"description": "use the file (data_more_than_8.txt)",
+															"type": "file",
+															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/data_more_than_8.txt"
+														}
+													]
+												},
+												"url": {
+													"raw": "localhost:8080/orders",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 19:51:34 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid format on the line: 1\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "404 error -  invalid path",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/success-files/data_2.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/orders/upload",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders",
+										"upload"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "404 error -  invalid path",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/success-files/data_2.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders/upload",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders",
+												"upload"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 19:52:03 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2024-04-23T19:52:03.764+00:00\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"path\": \"/orders/upload\"\n}"
+								}
+							]
+						},
+						{
+							"name": "400 error -  invalid file type as .jpg",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"description": "use the file (dados_invalid_type.jpg)",
+											"type": "file",
+											"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/dados_invalid_type.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/orders",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "400 error -  invalid file type as .jpg",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (dados_invalid_type.jpg)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/dados_invalid_type.jpg"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 19:52:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"File type is incorrect. Only .txt is allowed\"\n}"
+								}
+							]
+						},
+						{
+							"name": "400 error -  empty .txt file",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"description": "use the file (dados_empty.txt)",
+											"type": "file",
+											"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/dados_empty.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/orders",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "400 error -  empty .txt file",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (dados_empty.txt)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/dados_empty.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 19:53:25 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"File is empty\"\n}"
+								}
+							]
+						}
+					]
+				}
+			],
+			"description": "Endpoint responsable to upload a (.txt) file with more details about orders, products and users"
+		},
+		{
+			"name": "GET/orders",
+			"item": [
+				{
+					"name": "Success",
+					"item": [
+						{
+							"name": "200 - List all orders by default pagedList",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/orders",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "orderId",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "startDate",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "endDate",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 - List all orders by default pagedList",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": null,
+													"disabled": true
+												},
+												{
+													"key": "size",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 20:00:41 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"user_id\": 88,\n        \"name\": \"Terra Daniel DDS\",\n        \"orders\": [\n            {\n                \"order_id\": 836,\n                \"total\": \"7310.48\",\n                \"date\": \"2021-09-09\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3798.04\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3512.44\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 835,\n                \"total\": \"5374.52\",\n                \"date\": \"2021-07-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1975.64\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3398.88\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 103,\n        \"name\": \"Gail Bradtke\",\n        \"orders\": [\n            {\n                \"order_id\": 976,\n                \"total\": \"5922.80\",\n                \"date\": \"2021-09-28\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1678.46\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"4244.34\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 978,\n                \"total\": \"6165.88\",\n                \"date\": \"2021-06-26\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"849.28\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1824.08\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3492.52\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 966,\n                \"total\": \"7817.16\",\n                \"date\": \"2021-05-07\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3128.42\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3688.80\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"999.94\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 967,\n                \"total\": \"6649.10\",\n                \"date\": \"2021-08-31\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"456.48\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2770.18\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3422.44\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 975,\n                \"total\": \"6361.48\",\n                \"date\": \"2021-10-09\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2814.42\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2189.56\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1357.50\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 963,\n                \"total\": \"7446.76\",\n                \"date\": \"2021-07-16\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1869.38\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2522.94\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3054.44\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 970,\n                \"total\": \"7190.44\",\n                \"date\": \"2021-07-11\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1886.02\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3834.86\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1469.56\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 980,\n                \"total\": \"6008.24\",\n                \"date\": \"2021-11-05\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"4273.54\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1734.70\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 979,\n                \"total\": \"6531.84\",\n                \"date\": \"2021-09-07\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3675.90\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2756.50\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"99.44\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 969,\n                \"total\": \"4038.98\",\n                \"date\": \"2021-12-25\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2491.90\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1295.12\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"251.96\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 974,\n                \"total\": \"6489.98\",\n                \"date\": \"2021-05-16\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3857.92\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1429.36\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1202.70\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 968,\n                \"total\": \"4333.92\",\n                \"date\": \"2021-10-13\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"141.28\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"837.04\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3355.60\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 964,\n                \"total\": \"5743.10\",\n                \"date\": \"2021-04-07\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"4146.68\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1596.42\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 973,\n                \"total\": \"7936.24\",\n                \"date\": \"2021-04-11\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3635.38\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1055.64\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3245.22\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 972,\n                \"total\": \"7092.84\",\n                \"date\": \"2021-11-10\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3071.68\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2757.16\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"1264.00\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 971,\n                \"total\": \"7225.74\",\n                \"date\": \"2021-08-16\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"744.80\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2873.16\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3607.78\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 962,\n                \"total\": \"9415.92\",\n                \"date\": \"2021-10-16\",\n                \"products\": [\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"2714.58\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3218.46\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3482.88\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 977,\n                \"total\": \"8545.42\",\n                \"date\": \"2021-05-29\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"7355.98\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"1189.44\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 965,\n                \"total\": \"3484.44\",\n                \"date\": \"2021-11-27\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"1107.80\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"987.40\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1389.24\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 83,\n        \"name\": \"Frances Satterfield\",\n        \"orders\": [\n            {\n                \"order_id\": 786,\n                \"total\": \"6273.26\",\n                \"date\": \"2021-07-24\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2971.08\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3302.18\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 791,\n                \"total\": \"5029.70\",\n                \"date\": \"2021-11-22\",\n                \"products\": [\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"449.50\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2633.74\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1946.46\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 784,\n                \"total\": \"6421.28\",\n                \"date\": \"2021-05-24\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3697.36\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2646.84\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"77.08\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 785,\n                \"total\": \"5015.88\",\n                \"date\": \"2021-11-15\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3534.32\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"749.84\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"731.72\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 788,\n                \"total\": \"5756.76\",\n                \"date\": \"2021-09-09\",\n                \"products\": [\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"133.22\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3934.80\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1688.74\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 792,\n                \"total\": \"3188.28\",\n                \"date\": \"2021-04-24\",\n                \"products\": [\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"713.32\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2474.96\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 787,\n                \"total\": \"5012.16\",\n                \"date\": \"2021-09-27\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"27.58\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2090.82\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2893.76\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 783,\n                \"total\": \"3636.88\",\n                \"date\": \"2021-04-14\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1034.66\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2166.18\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"436.04\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 781,\n                \"total\": \"4596.28\",\n                \"date\": \"2021-07-14\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"600.50\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2096.84\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1898.94\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 789,\n                \"total\": \"7885.12\",\n                \"date\": \"2021-04-12\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1331.30\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3235.36\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3318.46\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 777,\n                \"total\": \"6349.66\",\n                \"date\": \"2021-10-06\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3038.90\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3310.76\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 778,\n                \"total\": \"6300.36\",\n                \"date\": \"2021-04-26\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"4154.50\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2145.86\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 780,\n                \"total\": \"3502.94\",\n                \"date\": \"2021-07-24\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1268.60\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"609.28\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1625.06\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 790,\n                \"total\": \"8124.38\",\n                \"date\": \"2021-04-08\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1231.62\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3625.60\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3267.16\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 779,\n                \"total\": \"8015.90\",\n                \"date\": \"2021-06-27\",\n                \"products\": [\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3790.64\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"4225.26\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 782,\n                \"total\": \"8596.64\",\n                \"date\": \"2021-11-20\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2498.80\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"6097.84\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 141,\n        \"name\": \"Lloyd Mante\",\n        \"orders\": [\n            {\n                \"order_id\": 1304,\n                \"total\": \"11077.02\",\n                \"date\": \"2021-10-12\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"4610.64\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2946.36\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3520.02\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1308,\n                \"total\": \"9131.48\",\n                \"date\": \"2021-12-12\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2120.02\"\n                    },\n                    {\n                        \"product_id\": 7,\n                        \"value\": \"2613.12\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3253.14\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1145.20\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1295,\n                \"total\": \"9568.80\",\n                \"date\": \"2021-05-29\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3285.62\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2996.66\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3286.52\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1302,\n                \"total\": \"4322.70\",\n                \"date\": \"2021-12-19\",\n                \"products\": [\n                    {\n                        \"product_id\": 7,\n                        \"value\": \"113.44\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3928.46\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"280.80\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1305,\n                \"total\": \"6577.12\",\n                \"date\": \"2021-10-19\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3035.06\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3542.06\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1307,\n                \"total\": \"6446.00\",\n                \"date\": \"2021-07-03\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"4452.86\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1993.14\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1293,\n                \"total\": \"6383.78\",\n                \"date\": \"2021-06-29\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"552.00\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2364.20\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3467.58\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1296,\n                \"total\": \"3600.34\",\n                \"date\": \"2021-05-28\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"247.84\"\n                    },\n                    {\n                        \"product_id\": 7,\n                        \"value\": \"265.22\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3087.28\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1301,\n                \"total\": \"7105.96\",\n                \"date\": \"2021-07-29\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3671.88\"\n                    },\n                    {\n                        \"product_id\": 7,\n                        \"value\": \"79.04\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3355.04\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1298,\n                \"total\": \"8466.50\",\n                \"date\": \"2021-09-01\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2155.06\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"671.54\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3610.62\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2029.28\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1310,\n                \"total\": \"10017.40\",\n                \"date\": \"2021-09-15\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3575.08\"\n                    },\n                    {\n                        \"product_id\": 7,\n                        \"value\": \"161.56\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2829.40\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3451.36\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1299,\n                \"total\": \"13102.92\",\n                \"date\": \"2021-03-30\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2500.12\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3547.18\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3329.82\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3725.80\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1306,\n                \"total\": \"8605.86\",\n                \"date\": \"2021-07-28\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3578.28\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3010.58\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2017.00\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1294,\n                \"total\": \"6392.48\",\n                \"date\": \"2021-08-06\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1817.82\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"1755.66\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"1682.44\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1136.56\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1300,\n                \"total\": \"13678.80\",\n                \"date\": \"2021-04-14\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3801.96\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"6550.52\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3326.32\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1292,\n                \"total\": \"8352.40\",\n                \"date\": \"2021-12-01\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"5428.06\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"781.76\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2142.58\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1303,\n                \"total\": \"4999.50\",\n                \"date\": \"2021-12-07\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"794.70\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3416.26\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"788.54\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1309,\n                \"total\": \"9878.02\",\n                \"date\": \"2021-06-01\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3866.18\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"6011.84\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1297,\n                \"total\": \"6176.20\",\n                \"date\": \"2021-07-06\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3467.08\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"493.50\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2215.62\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 177,\n        \"name\": \"Dr. Patrina Frami\",\n        \"orders\": [\n            {\n                \"order_id\": 1632,\n                \"total\": \"4396.76\",\n                \"date\": \"2021-03-10\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2090.26\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2306.50\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1641,\n                \"total\": \"3792.90\",\n                \"date\": \"2021-06-18\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3148.42\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"644.48\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1633,\n                \"total\": \"1348.38\",\n                \"date\": \"2021-11-26\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1094.32\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"254.06\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1630,\n                \"total\": \"4446.60\",\n                \"date\": \"2021-03-07\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2462.00\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"1984.60\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1639,\n                \"total\": \"4019.16\",\n                \"date\": \"2021-07-26\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"232.78\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3786.38\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1642,\n                \"total\": \"5039.82\",\n                \"date\": \"2021-05-22\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2495.40\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2544.42\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1636,\n                \"total\": \"2990.38\",\n                \"date\": \"2021-11-20\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2990.38\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1631,\n                \"total\": \"5287.22\",\n                \"date\": \"2021-07-17\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2040.66\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3246.56\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1635,\n                \"total\": \"3396.14\",\n                \"date\": \"2021-09-22\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2651.18\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"744.96\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1627,\n                \"total\": \"5122.76\",\n                \"date\": \"2021-10-19\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2047.90\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3074.86\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1634,\n                \"total\": \"3763.20\",\n                \"date\": \"2021-10-27\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"854.40\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2908.80\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1628,\n                \"total\": \"5486.74\",\n                \"date\": \"2021-10-28\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1760.54\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3726.20\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1637,\n                \"total\": \"2374.54\",\n                \"date\": \"2021-09-19\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"727.28\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1647.26\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1640,\n                \"total\": \"3442.82\",\n                \"date\": \"2021-07-14\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1858.28\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1584.54\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1638,\n                \"total\": \"7275.76\",\n                \"date\": \"2021-03-27\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3410.88\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3864.88\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1629,\n                \"total\": \"5286.80\",\n                \"date\": \"2021-07-29\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3693.58\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"1593.22\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1626,\n                \"total\": \"388.74\",\n                \"date\": \"2021-05-10\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"214.48\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"174.26\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 136,\n        \"name\": \"Miss Freida Rippin\",\n        \"orders\": [\n            {\n                \"order_id\": 1254,\n                \"total\": \"6169.16\",\n                \"date\": \"2021-10-30\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2314.52\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3854.64\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1262,\n                \"total\": \"2590.82\",\n                \"date\": \"2021-11-08\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"73.78\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2517.04\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1257,\n                \"total\": \"6382.12\",\n                \"date\": \"2021-09-06\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3565.24\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2816.88\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1255,\n                \"total\": \"5219.02\",\n                \"date\": \"2021-09-12\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1552.32\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3666.70\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1260,\n                \"total\": \"4101.96\",\n                \"date\": \"2021-11-13\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3645.74\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"456.22\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1261,\n                \"total\": \"1324.30\",\n                \"date\": \"2021-12-21\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"198.36\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1125.94\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1263,\n                \"total\": \"1685.00\",\n                \"date\": \"2021-10-30\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1216.60\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"468.40\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1258,\n                \"total\": \"5711.38\",\n                \"date\": \"2021-09-06\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2240.40\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3470.98\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1259,\n                \"total\": \"3211.34\",\n                \"date\": \"2021-09-25\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"571.00\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2640.34\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1256,\n                \"total\": \"6421.14\",\n                \"date\": \"2021-09-04\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2975.68\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3445.46\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 200,\n        \"name\": \"Marcos Stanton\",\n        \"orders\": [\n            {\n                \"order_id\": 1839,\n                \"total\": \"1592.18\",\n                \"date\": \"2021-09-16\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1592.18\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1841,\n                \"total\": \"2705.72\",\n                \"date\": \"2021-09-29\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2705.72\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1832,\n                \"total\": \"2424.30\",\n                \"date\": \"2021-10-27\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2424.30\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1840,\n                \"total\": \"1262.14\",\n                \"date\": \"2021-06-20\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1262.14\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1835,\n                \"total\": \"1371.22\",\n                \"date\": \"2021-04-20\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1371.22\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1836,\n                \"total\": \"3834.78\",\n                \"date\": \"2021-07-11\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3834.78\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1830,\n                \"total\": \"3862.96\",\n                \"date\": \"2021-03-11\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3862.96\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1843,\n                \"total\": \"1228.64\",\n                \"date\": \"2021-05-24\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"1228.64\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1838,\n                \"total\": \"2825.52\",\n                \"date\": \"2021-09-04\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2825.52\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1837,\n                \"total\": \"2563.66\",\n                \"date\": \"2021-09-22\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2563.66\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1834,\n                \"total\": \"454.66\",\n                \"date\": \"2021-08-31\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"454.66\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1833,\n                \"total\": \"2202.66\",\n                \"date\": \"2021-12-15\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2202.66\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1831,\n                \"total\": \"1129.38\",\n                \"date\": \"2021-08-28\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1129.38\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1844,\n                \"total\": \"2104.78\",\n                \"date\": \"2021-11-02\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2104.78\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1842,\n                \"total\": \"2765.12\",\n                \"date\": \"2021-04-04\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2765.12\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 156,\n        \"name\": \"Angelyn Luettgen\",\n        \"orders\": [\n            {\n                \"order_id\": 1447,\n                \"total\": \"9583.80\",\n                \"date\": \"2021-07-20\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"829.02\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3375.42\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3680.48\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1698.88\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1443,\n                \"total\": \"11767.08\",\n                \"date\": \"2021-03-26\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3869.50\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2713.38\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1467.46\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3716.74\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1446,\n                \"total\": \"9337.90\",\n                \"date\": \"2021-03-14\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"569.64\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2012.18\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3124.62\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3631.46\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1450,\n                \"total\": \"9443.40\",\n                \"date\": \"2021-06-04\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"4347.70\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2373.42\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2722.28\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1453,\n                \"total\": \"7603.40\",\n                \"date\": \"2021-05-11\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"80.06\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3735.90\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2240.48\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1546.96\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1454,\n                \"total\": \"6966.30\",\n                \"date\": \"2021-03-16\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2444.28\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1763.28\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"656.76\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"2101.98\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1448,\n                \"total\": \"7451.44\",\n                \"date\": \"2021-09-03\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"941.92\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"1578.62\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"4930.90\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1456,\n                \"total\": \"8523.60\",\n                \"date\": \"2021-04-03\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"4714.98\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3808.62\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1445,\n                \"total\": \"3767.90\",\n                \"date\": \"2021-05-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2079.04\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1688.86\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1444,\n                \"total\": \"3099.30\",\n                \"date\": \"2021-07-21\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1543.32\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1555.98\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1451,\n                \"total\": \"12396.62\",\n                \"date\": \"2021-08-14\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"7245.70\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3183.30\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1967.62\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1455,\n                \"total\": \"5182.98\",\n                \"date\": \"2021-11-25\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2822.98\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1760.88\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"599.12\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1449,\n                \"total\": \"8823.78\",\n                \"date\": \"2021-09-12\",\n                \"products\": [\n                    {\n                        \"product_id\": 7,\n                        \"value\": \"1958.36\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"841.02\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"6024.40\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1452,\n                \"total\": \"4064.06\",\n                \"date\": \"2021-07-08\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"544.50\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1515.64\"\n                    },\n                    {\n                        \"product_id\": 7,\n                        \"value\": \"524.98\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1478.94\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 181,\n        \"name\": \"Frank McDermott\",\n        \"orders\": [\n            {\n                \"order_id\": 1683,\n                \"total\": \"7796.48\",\n                \"date\": \"2021-10-31\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"968.80\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"1155.84\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2783.62\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2888.22\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1688,\n                \"total\": \"8997.80\",\n                \"date\": \"2021-12-15\",\n                \"products\": [\n                    {\n                        \"product_id\": 7,\n                        \"value\": \"1281.36\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2965.62\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"4750.82\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1686,\n                \"total\": \"3694.86\",\n                \"date\": \"2021-06-29\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1703.34\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"220.50\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"1771.02\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1687,\n                \"total\": \"6711.30\",\n                \"date\": \"2021-12-28\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1832.18\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"827.52\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"1155.48\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2896.12\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1682,\n                \"total\": \"6811.52\",\n                \"date\": \"2021-11-01\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3031.88\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3779.64\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1689,\n                \"total\": \"8666.78\",\n                \"date\": \"2021-08-05\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2031.04\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3690.94\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"545.44\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2399.36\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1684,\n                \"total\": \"10090.84\",\n                \"date\": \"2021-10-18\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3274.84\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3685.30\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2558.38\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"572.32\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1681,\n                \"total\": \"6837.26\",\n                \"date\": \"2021-05-28\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"1590.90\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"650.56\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1275.52\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3320.28\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1690,\n                \"total\": \"9276.36\",\n                \"date\": \"2021-07-12\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2006.50\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"4292.48\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2977.38\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 1685,\n                \"total\": \"7702.76\",\n                \"date\": \"2021-09-27\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3145.22\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1989.56\"\n                    },\n                    {\n                        \"product_id\": 7,\n                        \"value\": \"2567.98\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 28,\n        \"name\": \"Omer Harber\",\n        \"orders\": [\n            {\n                \"order_id\": 263,\n                \"total\": \"8119.90\",\n                \"date\": \"2021-09-24\",\n                \"products\": [\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3513.04\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2396.84\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2210.02\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 261,\n                \"total\": \"4666.54\",\n                \"date\": \"2021-12-12\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2226.16\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"576.22\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1864.16\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 258,\n                \"total\": \"6969.34\",\n                \"date\": \"2021-07-08\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2789.14\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1607.22\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2572.98\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 259,\n                \"total\": \"8391.60\",\n                \"date\": \"2021-12-09\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3274.18\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"5117.42\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 264,\n                \"total\": \"1217.42\",\n                \"date\": \"2021-12-10\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"233.44\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"900.08\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"83.90\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 267,\n                \"total\": \"4747.16\",\n                \"date\": \"2021-12-10\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"304.66\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"4442.50\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 270,\n                \"total\": \"3402.28\",\n                \"date\": \"2021-12-19\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2385.80\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"807.82\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"208.66\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 266,\n                \"total\": \"8428.92\",\n                \"date\": \"2021-06-19\",\n                \"products\": [\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3734.14\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"1817.60\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2877.18\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 262,\n                \"total\": \"5722.04\",\n                \"date\": \"2021-08-18\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3855.94\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1866.10\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 265,\n                \"total\": \"8370.34\",\n                \"date\": \"2021-08-03\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3653.38\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3924.68\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"792.28\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 269,\n                \"total\": \"6071.44\",\n                \"date\": \"2021-09-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2784.12\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3287.32\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 268,\n                \"total\": \"6471.86\",\n                \"date\": \"2021-12-22\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2657.82\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1950.34\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1863.70\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 260,\n                \"total\": \"6736.06\",\n                \"date\": \"2021-07-31\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"356.42\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"6379.64\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 271,\n                \"total\": \"4317.98\",\n                \"date\": \"2021-09-11\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"190.24\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2686.04\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1441.70\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "200 - List all using page and size",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/orders?page=5&size=3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "orderId",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "startDate",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "endDate",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "5"
+										},
+										{
+											"key": "size",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 - List all using page and size",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?page=5&size=3",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": "5"
+												},
+												{
+													"key": "size",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 20:00:55 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"user_id\": 3,\n        \"name\": \"Mrs. Naida Bruen\",\n        \"orders\": [\n            {\n                \"order_id\": 31,\n                \"total\": \"5727.88\",\n                \"date\": \"2021-07-05\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1483.46\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1168.94\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"3075.48\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 28,\n                \"total\": \"6380.74\",\n                \"date\": \"2021-11-17\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3097.10\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3283.64\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 30,\n                \"total\": \"3681.72\",\n                \"date\": \"2021-05-11\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1483.12\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1951.10\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"247.50\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 26,\n                \"total\": \"5755.16\",\n                \"date\": \"2021-06-25\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1664.82\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"549.34\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3541.00\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 36,\n                \"total\": \"6886.98\",\n                \"date\": \"2021-07-24\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"5312.92\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1574.06\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 27,\n                \"total\": \"6278.70\",\n                \"date\": \"2021-11-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2639.06\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"1291.26\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2348.38\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 25,\n                \"total\": \"4383.04\",\n                \"date\": \"2021-03-16\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"75.28\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3910.82\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"396.94\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 29,\n                \"total\": \"6663.14\",\n                \"date\": \"2021-06-26\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3394.22\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1290.68\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1978.24\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 33,\n                \"total\": \"6780.14\",\n                \"date\": \"2021-10-09\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3004.52\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1272.16\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2503.46\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 32,\n                \"total\": \"4131.76\",\n                \"date\": \"2021-08-10\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2081.62\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"370.02\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"1680.12\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 34,\n                \"total\": \"7286.92\",\n                \"date\": \"2021-06-03\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"786.26\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2722.44\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3778.22\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 35,\n                \"total\": \"5114.46\",\n                \"date\": \"2021-11-19\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"4109.24\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1005.22\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 65,\n        \"name\": \"Jovan Deckow\",\n        \"orders\": [\n            {\n                \"order_id\": 619,\n                \"total\": \"7388.04\",\n                \"date\": \"2021-10-09\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3224.20\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3638.54\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"525.30\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 617,\n                \"total\": \"1983.72\",\n                \"date\": \"2021-09-03\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1528.92\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"259.58\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"195.22\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 612,\n                \"total\": \"3361.20\",\n                \"date\": \"2021-10-05\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3200.54\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"160.66\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 618,\n                \"total\": \"6664.94\",\n                \"date\": \"2021-09-05\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"1732.98\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2664.56\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"2267.40\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 620,\n                \"total\": \"3992.42\",\n                \"date\": \"2021-12-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"1814.40\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"850.02\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1328.00\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 611,\n                \"total\": \"4111.18\",\n                \"date\": \"2021-04-04\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"583.56\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"3097.02\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"430.60\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 616,\n                \"total\": \"7575.78\",\n                \"date\": \"2021-03-11\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3703.74\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3872.04\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 624,\n                \"total\": \"6045.28\",\n                \"date\": \"2021-03-08\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3806.96\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"162.64\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2075.68\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 614,\n                \"total\": \"2485.90\",\n                \"date\": \"2021-09-03\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2227.94\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"206.12\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"51.84\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 615,\n                \"total\": \"4707.76\",\n                \"date\": \"2021-04-24\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1192.88\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1066.26\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2448.62\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 621,\n                \"total\": \"8110.56\",\n                \"date\": \"2021-07-12\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2752.84\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2952.40\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2405.32\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 613,\n                \"total\": \"7835.38\",\n                \"date\": \"2021-04-27\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1389.68\"\n                    },\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3732.92\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2712.78\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 622,\n                \"total\": \"7772.74\",\n                \"date\": \"2021-07-03\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3643.06\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"2711.16\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1418.52\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 623,\n                \"total\": \"5987.88\",\n                \"date\": \"2021-05-30\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2136.26\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"927.08\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2924.54\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 90,\n        \"name\": \"Brittany Kshlerin I\",\n        \"orders\": [\n            {\n                \"order_id\": 851,\n                \"total\": \"7231.04\",\n                \"date\": \"2021-05-17\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3822.44\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3408.60\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 846,\n                \"total\": \"2683.54\",\n                \"date\": \"2021-10-17\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"817.20\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1866.34\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 850,\n                \"total\": \"3479.76\",\n                \"date\": \"2021-05-16\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3479.76\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 845,\n                \"total\": \"6292.72\",\n                \"date\": \"2021-05-25\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"6292.72\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 855,\n                \"total\": \"4543.46\",\n                \"date\": \"2021-07-21\",\n                \"products\": [\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"1675.54\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2867.92\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 844,\n                \"total\": \"7444.80\",\n                \"date\": \"2021-06-20\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3519.44\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3925.36\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 848,\n                \"total\": \"4144.76\",\n                \"date\": \"2021-12-01\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"970.78\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"3173.98\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 849,\n                \"total\": \"5651.12\",\n                \"date\": \"2021-07-20\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2771.12\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2880.00\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 856,\n                \"total\": \"3685.16\",\n                \"date\": \"2021-12-07\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1948.96\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1736.20\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 847,\n                \"total\": \"3253.34\",\n                \"date\": \"2021-07-30\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"1014.26\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2239.08\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 854,\n                \"total\": \"2719.38\",\n                \"date\": \"2021-04-13\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"1581.44\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"1137.94\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 852,\n                \"total\": \"7496.44\",\n                \"date\": \"2021-09-11\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3895.62\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"3600.82\"\n                    }\n                ]\n            },\n            {\n                \"order_id\": 853,\n                \"total\": \"3226.38\",\n                \"date\": \"2021-08-22\",\n                \"products\": [\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"1504.94\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1721.44\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "200 - List by (orderID)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/orders?orderId=137",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "orderId",
+											"value": "137"
+										},
+										{
+											"key": "startDate",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "endDate",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 - List by (orderID)",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?orderId=137",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "137"
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 20:01:08 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"user_id\": 16,\n        \"name\": \"Lonnie Macejkovic\",\n        \"orders\": [\n            {\n                \"order_id\": 137,\n                \"total\": \"5525.96\",\n                \"date\": \"2021-06-06\",\n                \"products\": [\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"3189.96\"\n                    },\n                    {\n                        \"product_id\": 1,\n                        \"value\": \"2336.00\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "200 - List by (startDate | endDate)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/orders?startDate=2021-03-23&endDate=2021-03-23",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "orderId",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "startDate",
+											"value": "2021-03-23"
+										},
+										{
+											"key": "endDate",
+											"value": "2021-03-23"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200 - List by (startDate | endDate)",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?startDate=2021-03-23&endDate=2021-03-23",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "startDate",
+													"value": "2021-03-23"
+												},
+												{
+													"key": "endDate",
+													"value": "2021-03-23"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 20:01:28 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"user_id\": 21,\n        \"name\": \"Kermit Romaguera\",\n        \"orders\": [\n            {\n                \"order_id\": 198,\n                \"total\": \"5806.34\",\n                \"date\": \"2021-03-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2233.94\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3572.40\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 33,\n        \"name\": \"Luther Hudson\",\n        \"orders\": [\n            {\n                \"order_id\": 296,\n                \"total\": \"1786.48\",\n                \"date\": \"2021-03-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"1786.48\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 44,\n        \"name\": \"Lewis Baumbach\",\n        \"orders\": [\n            {\n                \"order_id\": 418,\n                \"total\": \"2046.62\",\n                \"date\": \"2021-03-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"2046.62\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 60,\n        \"name\": \"Mona Bogan\",\n        \"orders\": [\n            {\n                \"order_id\": 586,\n                \"total\": \"7554.70\",\n                \"date\": \"2021-03-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"1466.74\"\n                    },\n                    {\n                        \"product_id\": 3,\n                        \"value\": \"6087.96\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 118,\n        \"name\": \"Robena Raynor\",\n        \"orders\": [\n            {\n                \"order_id\": 1088,\n                \"total\": \"8188.10\",\n                \"date\": \"2021-03-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 6,\n                        \"value\": \"3128.60\"\n                    },\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"3376.28\"\n                    },\n                    {\n                        \"product_id\": 4,\n                        \"value\": \"65.24\"\n                    },\n                    {\n                        \"product_id\": 5,\n                        \"value\": \"1617.98\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 165,\n        \"name\": \"Claudia Raynor\",\n        \"orders\": [\n            {\n                \"order_id\": 1514,\n                \"total\": \"994.94\",\n                \"date\": \"2021-03-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"994.94\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"user_id\": 174,\n        \"name\": \"Bernie Kuvalis\",\n        \"orders\": [\n            {\n                \"order_id\": 1603,\n                \"total\": \"5122.56\",\n                \"date\": \"2021-03-23\",\n                \"products\": [\n                    {\n                        \"product_id\": 2,\n                        \"value\": \"2911.92\"\n                    },\n                    {\n                        \"product_id\": 0,\n                        \"value\": \"2210.64\"\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "204 - No data found",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/orders?orderId=455485",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "orderId",
+											"value": "455485"
+										},
+										{
+											"key": "startDate",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "endDate",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "204 - No data found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?orderId=455485",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "455485"
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 20:01:43 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Expected Errors",
+					"item": [
+						{
+							"name": "orderID",
+							"item": [
+								{
+									"name": "400 - orderId as string",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?orderId=teste",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "teste"
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 - orderId as string",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "localhost:8080/orders?orderId=teste",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "teste"
+														},
+														{
+															"key": "startDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "endDate",
+															"value": "",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 20:02:02 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 - orderId many digits",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?orderId=999999999999999999999999999",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "999999999999999999999999999"
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 - orderId many digits",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "localhost:8080/orders?orderId=999999999999999999999999999",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "999999999999999999999999999"
+														},
+														{
+															"key": "startDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "endDate",
+															"value": "",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 20:02:12 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "startDate | endDate",
+							"item": [
+								{
+									"name": "400 - startDate | endDate as string",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?startDate=teste&endDate=teste",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "startDate",
+													"value": "teste"
+												},
+												{
+													"key": "endDate",
+													"value": "teste"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 - startDate | endDate as string",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "localhost:8080/orders?startDate=teste&endDate=teste",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "startDate",
+															"value": "teste"
+														},
+														{
+															"key": "endDate",
+															"value": "teste"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 20:02:23 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "PageList",
+							"item": [
+								{
+									"name": "400 - page as string",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?page=teste",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": "teste"
+												},
+												{
+													"key": "size",
+													"value": "",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 - page as string",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "localhost:8080/orders?page=teste",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "startDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "endDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "page",
+															"value": "teste"
+														},
+														{
+															"key": "size",
+															"value": "",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 20:02:33 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 - page negative",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?page=-10",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": "-10"
+												},
+												{
+													"key": "size",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 - page negative",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "localhost:8080/orders?page=-10",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "startDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "endDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "page",
+															"value": "-10"
+														},
+														{
+															"key": "size",
+															"value": null,
+															"disabled": true
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 20:02:44 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 - size as string",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?size=teste",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "size",
+													"value": "teste"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 - size as string",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "localhost:8080/orders?size=teste",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "startDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "endDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "page",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "size",
+															"value": "teste"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 20:02:57 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 - size negative",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?size=-10",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "size",
+													"value": "-10"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 - size negative",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "localhost:8080/orders?size=-10",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "startDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "endDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "page",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "size",
+															"value": "-10"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 20:03:10 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
+										}
+									]
+								},
+								{
+									"name": "400 - size equals 0",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/orders?size=0",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders"
+											],
+											"query": [
+												{
+													"key": "orderId",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "startDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "endDate",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "page",
+													"value": "",
+													"disabled": true
+												},
+												{
+													"key": "size",
+													"value": "0"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "400 - size equals 0",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "localhost:8080/orders?size=0",
+													"host": [
+														"localhost"
+													],
+													"port": "8080",
+													"path": [
+														"orders"
+													],
+													"query": [
+														{
+															"key": "orderId",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "startDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "endDate",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "page",
+															"value": "",
+															"disabled": true
+														},
+														{
+															"key": "size",
+															"value": "0"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 23 Apr 2024 20:03:20 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "404 error -  invalid path",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Z:/processamento-arquivo-api/Testes/Arquivos sucesso/data_2.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/orders/upload",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"orders",
+										"upload"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "404 error -  invalid path",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": "/Z:/processamento-arquivo-api/Testes/Arquivos sucesso/data_2.txt"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:8080/orders/upload",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"orders",
+												"upload"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 23 Apr 2024 20:03:31 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"timestamp\": \"2024-04-23T20:03:31.767+00:00\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"path\": \"/orders/upload\"\n}"
+								}
+							]
+						}
+					]
+				}
+			],
+			"description": "Endpoint responsable to get details about the saved orders"
+		},
+		{
+			"name": "405 error - http verb not allowed",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Z:/processamento-arquivo-api/Testes/Arquivos sucesso/data_2.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "405 error - http verb not allowed",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Z:/processamento-arquivo-api/Testes/Arquivos sucesso/data_2.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"status": "Method Not Allowed",
+					"code": 405,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Allow",
+							"value": "GET, POST"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 Apr 2024 20:03:49 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2024-04-23T20:03:49.239+00:00\",\n    \"status\": 405,\n    \"error\": \"Method Not Allowed\",\n    \"path\": \"/orders\"\n}"
+				}
+			]
+		}
+	]
+}
