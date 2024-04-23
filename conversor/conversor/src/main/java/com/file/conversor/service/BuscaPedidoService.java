@@ -21,24 +21,22 @@ public class BuscaPedidoService {
 
     public List<UsuarioDto> buscar(BuscaPedidoRequestDto buscaPedidoRequestDto) throws ParseException {
 
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         List<Usuario> usuarios = new java.util.ArrayList<>(List.of());
-        if (Objects.nonNull(buscaPedidoRequestDto.getPedidoId())
-                && Objects.nonNull(buscaPedidoRequestDto.getDataInicial())
+
+        if (Objects.nonNull(buscaPedidoRequestDto.getDataInicial())
                 && Objects.nonNull(buscaPedidoRequestDto.getDataFinal())) {
 
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
             Date dataInicial = formato.parse(buscaPedidoRequestDto.getDataInicial());
             Date dataFinal = formato.parse(buscaPedidoRequestDto.getDataFinal());
-            usuarios = usuarioService.buscarPorDataCompraPedidoAndPedido(
-                    buscaPedidoRequestDto.getPedidoId(),
-                    dataInicial,
-                    dataFinal);
-        } else if ((Objects.nonNull(buscaPedidoRequestDto.getDataInicial())
-                && Objects.nonNull(buscaPedidoRequestDto.getDataFinal()))) {
-
-            Date dataInicial = formato.parse(buscaPedidoRequestDto.getDataInicial());
-            Date dataFinal = formato.parse(buscaPedidoRequestDto.getDataFinal());
-            usuarios = usuarioService.buscarPorDataCompraPedido(dataInicial, dataFinal);
+            if (Objects.nonNull(buscaPedidoRequestDto.getPedidoId())) {
+                usuarios = usuarioService.buscarPorDataCompraPedidoAndPedido(
+                        buscaPedidoRequestDto.getPedidoId(),
+                        dataInicial,
+                        dataFinal);
+            } else {
+                usuarios = usuarioService.buscarPorDataCompraPedido(dataInicial, dataFinal);
+            }
         } else if (Objects.nonNull(buscaPedidoRequestDto.getPedidoId())) {
 
             Usuario usuario = usuarioService.buscarPorPedidoId(buscaPedidoRequestDto.getPedidoId());

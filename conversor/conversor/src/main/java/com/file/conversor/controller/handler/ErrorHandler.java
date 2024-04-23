@@ -1,4 +1,4 @@
-package com.file.conversor.resource.handler;
+package com.file.conversor.controller.handler;
 
 import com.file.conversor.repository.dto.ErroResponseDto;
 import org.springframework.http.HttpStatus;

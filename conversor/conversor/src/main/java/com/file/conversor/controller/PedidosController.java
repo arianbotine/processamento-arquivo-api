@@ -1,9 +1,8 @@
-package com.file.conversor.resource;
+package com.file.conversor.controller;
 
 import com.file.conversor.repository.dto.BuscaPedidoRequestDto;
 import com.file.conversor.repository.dto.RegistraPedidoResponseDto;
 import com.file.conversor.repository.dto.UsuarioDto;
-import com.file.conversor.repository.entity.Usuario;
 import com.file.conversor.service.BuscaPedidoService;
 import com.file.conversor.service.RegistraPedidoService;
 import com.file.conversor.service.validator.ArquivoValidator;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -19,14 +17,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.ParseException;
-import java.util.IllegalFormatConversionException;
-import java.util.IllegalFormatException;
 import java.util.List;
 import java.util.Objects;
 
 @RestController
 @RequestMapping("/orders")
-public class PedidosResource {
+public class PedidosController {
 
     @Autowired
     RegistraPedidoService registraPedidoService;
