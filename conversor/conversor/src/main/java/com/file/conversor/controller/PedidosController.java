@@ -106,7 +106,7 @@ public class PedidosController {
         if (!usuarios.isEmpty()) {
             return ResponseEntity.ok(usuarios);
         } else {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(usuarios);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
     }
 }
