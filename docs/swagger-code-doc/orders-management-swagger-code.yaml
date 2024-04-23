@@ -1,0 +1,414 @@
+openapi: 3.0.3
+info:
+  title: Orders Management API
+  description: |-
+    API developed to assist in order management
+  version: 1.0.0
+
+servers:
+  - url: / - Default Server URL
+  
+tags:
+  - name: Orders
+
+  # Endpoints details    
+paths:
+  /orders:
+  
+  # Documentation related to the POST endpoint
+    post:
+      tags:
+        - Orders
+      summary: Upload a file with more details about orders, products, users
+      description: 'Using **file** as a key,select **(.txt)** to upload data'
+      operationId: uploadFile
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderUploadResponse'
+        '400':
+          description: Bad Request - Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'          
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'           
+        '405':
+          description: Method Not Allowed      
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'           
+        '500':
+          description: Internal Service Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'             
+    
+  # Documentation related to the GET endpoint      
+    get:
+      tags:
+        - Orders
+      summary: Details about the saved orders
+      description: '**Notes:** To consider a period of dates, the **startDate** and **endDate** filters should be provided together'
+      operationId: orderDetails
+      parameters:
+        - name: orderId
+          in: query
+          description: Enter the desired OrderID to get related data
+          required: false
+          schema:
+            type: integer
+        - name: startDate
+          in: query
+          description: Enter the desired Purchase StartDate (yyyy-mm-dd) to get related data
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: Enter the desired Purchase EndDate (yyyy-mm-dd) to get related data          
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: page
+          in: query
+          description: Default value is 0
+          required: false
+          example: 0          
+          schema:
+            type: integer
+            minimum: 1
+        - name: size
+          in: query
+          description: Default value is 10
+          required: false
+          example: 10
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDetailsResponse'
+        '400':
+          description: Bad Request - Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse400'          
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse404'           
+        '405':
+          description: Method Not Allowed          
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse405'           
+        '500':
+          description: Internal Service Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse500'           
+
+# Schemas details
+components:
+  schemas:
+  # Components used on POST endpoint (future - IMPROVEMENT) 
+    # OrderSum:
+    #   type: object
+    #   properties:
+    #     records:
+    #       type: integer
+    #       format: int64
+    #       example: 1500
+    #     status:
+    #       type: string
+    #       example: INSERTED
+    # ProductSum:
+    #   type: object
+    #   properties:
+    #     records:
+    #       type: integer
+    #       format: int64
+    #       example: 500
+    #     status:
+    #       type: string
+    #       example: INSERTED
+    # UserSum:
+    #   type: object
+    #   properties:
+    #     records:
+    #       type: integer
+    #       format: int64
+    #       example: 100
+    #     status:
+    #       type: string
+    #       example: INSERTED      
+    # EntityOrders:
+    #   type: object
+    #   properties:
+    #     entity:
+    #       type: string
+    #       example: Orders
+    #     data:
+    #       $ref: '#/components/schemas/OrderSum'
+    # EntityProducts:
+    #   type: object
+    #   properties:
+    #     entity:
+    #       type: string
+    #       example: Products
+    #     data:
+    #       $ref: '#/components/schemas/ProductSum'
+    # EntityUsers:
+    #   type: object
+    #   properties:
+    #     entity:
+    #       type: string
+    #       example: Users
+    #     data:
+    #       $ref: '#/components/schemas/UserSum' 
+          
+  # POST response example (future - IMPROVEMENT)    
+    # OrderUploadResponse_Improvement:
+    #   type: object
+    #   properties:
+    #     status:
+    #       type: string
+    #       example: CREATED
+    #     message:
+    #       type: string
+    #       example: File upload completed
+    #     details:
+    #       type: array
+    #       items:
+    #         oneOf:
+    #           - $ref: '#/components/schemas/EntityOrders'
+    #           - $ref: '#/components/schemas/EntityProducts'
+    #           - $ref: '#/components/schemas/EntityUsers'
+  
+  # POST response example  
+    OrderUploadResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: CREATED
+        message:
+          type: string
+          example: File upload completed. 'X' lines read
+          
+  # Components used on GET endpoint
+    Product1:
+      type: object
+      properties:
+        product_id: 
+          type: integer
+          format: int64
+          example: 111
+        value:
+          type: string
+          example: 512.24
+    Product2:
+      type: object
+      properties:
+        product_id: 
+          type: integer
+          format: int64
+          example: 122
+        value:
+          type: string
+          example: 512.24   
+    Product3:
+      type: object
+      properties:
+        product_id: 
+          type: integer
+          format: int64
+          example: 111
+        value:
+          type: string
+          example: 256.24
+    Product4:
+      type: object
+      properties:
+        product_id: 
+          type: integer
+          format: int64
+          example: 122
+        value:
+          type: string
+          example: 256.24       
+    OrdersList1:
+      type: object
+      properties:
+        order_id:
+          type: integer
+          format: int64
+          example: 123
+        total:
+          type: string
+          example: 1024.48
+        date:
+          type: string
+          format: date
+          example: 2021-12-01
+        products:            
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/Product1'
+            - $ref: '#/components/schemas/Product2'
+            
+    OrdersList2:
+      type: object
+      properties:
+        order_id:
+          type: integer
+          format: int64
+          example: 12345
+        total:
+          type: string
+          example: 512.48
+        date:
+          type: string
+          format: date
+          example: 2020-12-01
+        products:            
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/Product3'
+            - $ref: '#/components/schemas/Product4'        
+    
+    UserDetails1:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Zarelli
+        orders:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/OrdersList1'
+    UserDetails2:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          format: int64
+          example: 2
+        name:
+          type: string
+          example: Medeiros
+        orders:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/OrdersList2'            
+    
+    # GET response example           
+    OrderDetailsResponse:
+      type: array
+      items:
+        oneOf:
+            - $ref: '#/components/schemas/UserDetails1'
+            - $ref: '#/components/schemas/UserDetails2' 
+    
+    # Expected errors 
+    ErrorResponse400:        
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int64
+          example: 400     
+        message:
+          type: string
+          example: Detailed message about the error that occurred 
+          
+    ErrorResponse404:        
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: datetime
+          example: "yyyy-mm-ddThh:mm:ss"     
+        status:
+          type: integer
+          format: int64
+          example: 404  
+        error:
+          type: string
+          example: Not Found
+        path:
+          type: string
+          example: /Path/ provided on the request     
+
+    ErrorResponse405:        
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: datetime
+          example: "yyyy-mm-ddThh:mm:ss"     
+        status:
+          type: integer
+          format: int64
+          example: 405  
+        error:
+          type: string
+          example: Method Not Allowed
+        path:
+          type: string
+          example: /orders    
+
+    ErrorResponse500:        
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: datetime
+          example: "yyyy-mm-ddThh:mm:ss"     
+        status:
+          type: integer
+          format: int64
+          example: 500  
+        error:
+          type: string
+          example: Internal Server Error
+        path:
+          type: string
+          example: /orders            

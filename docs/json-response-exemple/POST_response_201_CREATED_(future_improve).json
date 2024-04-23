@@ -1,0 +1,27 @@
+{
+    "status": "CREATED",
+    "message": "File upload completed",
+    "details": [
+      {
+        "entity": "Orders",
+        "data": {
+          "records": 1500,
+          "status": "INSERTED"
+        }
+      },
+      {
+        "entity": "Products",
+        "data": {
+          "records": 500,
+          "status": "INSERTED"
+        }
+      },
+      {
+        "entity": "Users",
+        "data": {
+          "records": 100,
+          "status": "INSERTED"
+        }
+      }
+    ]
+  }
