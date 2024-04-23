@@ -37,6 +37,10 @@ Exemplo (primeira linha não consta no arquivo):
 0000000002                                     Medeiros00000123450000000122      256.2420201201
 ```
 
+Segue dois arquivos de exemplo:
+
+
+
 ## Saída de dados
 
 Considerando como estrutura base do payload de response o seguinte json:
@@ -93,6 +97,11 @@ Considerar a consulta geral de pedidos e, também, a inclusão dos seguintes fil
 * id do pedido
 * intervalo de data de compra (data início e data fim)
 
+Segue dois arquivos de exemplos que podem ser utilizados:
+
+[dados1](assets/arquivos/data_1.txt)  
+[dado2](assets/arquivos/data_2.txt)
+
 ## Tecnologias
 
 Tecnologias escolhidas:
@@ -128,8 +137,21 @@ O projeto foi desenvolvido utilizando uma arquitetura de camadas para separar as
 
 Pacotes:
 
-service: regras de negócio e validações
-repository: tratamento de dados
-controller: controladores de api
+* `controller`: controladores de api
+* `repository`: tratamento de dados
+* `service`: regras de negócio e validações
 
-![alt text](assets/pacotes.png)
+![pacotes](assets/pacotes.png)
+
+
+## Testes
+
+Além dos testes unitários, foram projetados cenários de testes de retornos de sucesso e de erros esperados para ambos os endpoints (GET e POST), a partir desse documento foi criado uma collection usando o postman para realização dos testes manuais, onde o usuário poderá ter acesso detalhado a todos os tipos de request realizados e responses obtidos.
+
+[casos de testes manuais](docs/test-cases/casos-teste-post-get.xlsx)  
+[collection](docs/test-cases/Orders%20Management%20API.postman_collection.json)
+
+Para testar todos os cenários do endpoint POST, foi necessário a manipulação de dados e para isso diversos arquivos foram criados e estão disponiveis em `docs/test-cases/post-teste-arquivos`
+
+
+## Uso
