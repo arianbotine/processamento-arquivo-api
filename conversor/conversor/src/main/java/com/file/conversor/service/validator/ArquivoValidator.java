@@ -1,5 +1,6 @@
 package com.file.conversor.service.validator;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,9 +14,15 @@ public class ArquivoValidator {
     public void validar(MultipartFile arquivo) {
 
         if (Objects.equals(arquivo.getContentType(), CONTENT_TYPE_TXT) && arquivo.isEmpty()) {
-            throw new IllegalArgumentException("File is empty");
+            throw ExceptionValidator.builder()
+                    .status(HttpStatus.BAD_REQUEST)
+                    .mensagem("File is empty")
+                    .build();
         } else if (!Objects.equals(arquivo.getContentType(), CONTENT_TYPE_TXT)) {
-            throw new IllegalArgumentException("File type is incorrect. Only .txt is allowed");
+            throw ExceptionValidator.builder()
+                    .status(HttpStatus.BAD_REQUEST)
+                    .mensagem("File type is incorrect. Only .txt is allowed")
+                    .build();
         }
     }
 }
