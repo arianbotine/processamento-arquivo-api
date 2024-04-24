@@ -1,1 +1,0 @@
-CREATE DATABASE vertical_logistica_database;

@@ -1,9 +1,9 @@
-CREATE TABLE usuario (
+CREATE IF NOT EXISTS TABLE usuario (
     id BIGINT PRIMARY KEY NOT NULL,
     nome VARCHAR(45) NOT NULL
 );
 
-CREATE TABLE pedido (
+CREATE IF NOT EXISTS TABLE pedido (
     id BIGINT PRIMARY KEY NOT NULL,
     data_compra DATE NOT NULL,
     id_usuario BIGINT NOT NULL,
@@ -11,13 +11,13 @@ CREATE TABLE pedido (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
 
-CREATE INDEX idx_data_compra ON pedido (data_compra);
+CREATE IF NOT EXISTS INDEX idx_data_compra ON pedido (data_compra);
 
-CREATE TABLE produto (
+CREATE IF NOT EXISTS TABLE produto (
     id BIGINT PRIMARY KEY NOT NULL
 );
 
-CREATE TABLE pedido_produto (
+CREATE IF NOT EXISTS TABLE pedido_produto (
     id BIGSERIAL PRIMARY KEY NOT NULL,
     id_pedido BIGINT NOT NULL,
     id_produto BIGINT NOT NULL,
@@ -27,5 +27,5 @@ CREATE TABLE pedido_produto (
     FOREIGN KEY (id_produto) REFERENCES produto(id)
 );
 
-CREATE INDEX idx_id_pedido ON pedido_produto (id_pedido);
-CREATE INDEX idx_id_produto ON pedido_produto (id_produto);
+CREATE IF NOT EXISTS INDEX idx_id_pedido ON pedido_produto (id_pedido);
+CREATE IF NOT EXISTS INDEX idx_id_produto ON pedido_produto (id_produto);
