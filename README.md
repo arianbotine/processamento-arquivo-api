@@ -159,4 +159,4 @@ Para testar diversos retornos de "erros esperados" do endpoint POST, foi necess�
 
 ## Uso
 
-Foi gerado um docker-compose para o servico do postgres e um dockerfile para a aplicação java, sendo assim, para subir o projeto, basta executar `docker-compose up` em um local onde tem a docker instalada e o projeto já estará pronto para uso.
+Foi gerado um docker-compose para o servico do postgres e um dockerfile para a aplicação java, sendo assim, para subir o projeto, basta executar `docker-compose up --build` em um local onde tem a docker instalada e o projeto já estará pronto para uso.

@@ -27,12 +27,12 @@ class ArquivoValidatorTest {
     public void deveLancarErroQuandoArquivoTxtVazio() {
         MultipartFile arquivoTxt = ArquivoMother.textoVazio();
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        ExceptionValidator exception = assertThrows(ExceptionValidator.class, () -> {
             arquivoValidator.validar(arquivoTxt);
         });
 
         String mensagemEsperada = "File is empty";
-        String mensagemRetornada = exception.getMessage();
+        String mensagemRetornada = exception.getMensagem();
         assert (mensagemRetornada.contains(mensagemEsperada));
     }
 
@@ -41,12 +41,12 @@ class ArquivoValidatorTest {
     public void deveLancarErroQuandoArquivoNaoForTxt() {
         MultipartFile arquivoTxt = ArquivoMother.imagem();
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        ExceptionValidator exception = assertThrows(ExceptionValidator.class, () -> {
             arquivoValidator.validar(arquivoTxt);
         });
 
         String mensagemEsperada = "File type is incorrect. Only .txt is allowed";
-        String mensagemRetornada = exception.getMessage();
+        String mensagemRetornada = exception.getMensagem();
         assert (mensagemRetornada.contains(mensagemEsperada));
     }
 
