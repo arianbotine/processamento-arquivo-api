@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.text.ParseException;
@@ -23,6 +24,17 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         ErroResponseDto errorResponse = ErroResponseDto.builder()
                 .status(HttpStatus.BAD_REQUEST)
                 .mensagem("Invalid data provided")
+                .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(
+            MultipartException.class)
+    public ResponseEntity<ErroResponseDto> handleInvalidFileException(MultipartException ex) {
+        ErroResponseDto errorResponse = ErroResponseDto.builder()
+                .status(HttpStatus.BAD_REQUEST)
+                .mensagem("Select the file to be uploaded again")
                 .build();
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
