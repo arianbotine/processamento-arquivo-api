@@ -185,6 +185,7 @@ Caso seja feita modificações no código java, o comando que deve ser usado é 
 * Estudar uma forma de aplicar um force build no docker compose
 * Implementar automatização de validações no postman para validar de forma automatica se houve mudança dos responses
 * Melhorar tratamento de erro para considerar situações especificas em cada linha do arquivo
+* Incluir cache com redis no processo da API GET
 
 
 
