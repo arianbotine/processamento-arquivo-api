@@ -62,7 +62,8 @@ class RegistraPedidoServiceTest {
     @DisplayName("Deve registrar pedido sem erros")
     public void deveRegistrarPedido() throws ParseException, IOException {
 
-        MultipartFile arquivoTxt = ArquivoMother.textoPrenchido();
+        long contador = 1L;
+        MultipartFile arquivoTxt = ArquivoMother.umaLinhaValida();
         InputStream inputStream = arquivoTxt.getInputStream();
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader reader = new BufferedReader(inputStreamReader);
@@ -74,7 +75,7 @@ class RegistraPedidoServiceTest {
         Produto produto = ProdutoMother.simples().build();
 
         doNothing().when(arquivoValidator).validar(arquivoTxt);
-        doNothing().when(pedidoValidator).validar(registro, 1L);
+        doNothing().when(pedidoValidator).validar(registro, contador);
         when(registroPedidoDtoConverter.toDto(registro)).thenReturn(registroPedidoDto);
         when(usuarioService.registrar(any(Usuario.class))).thenReturn(usuario);
         when(pedidoService.registrar(any(Pedido.class))).thenReturn(pedido);
@@ -83,7 +84,7 @@ class RegistraPedidoServiceTest {
         registraPedidoService.lerArquivo(arquivoTxt);
 
         verify(arquivoValidator).validar(arquivoTxt);
-        verify(pedidoValidator).validar(registro, 1L);
+        verify(pedidoValidator).validar(registro, contador);
         verify(registroPedidoDtoConverter).toDto(registro);
         verify(usuarioService).registrar(any(Usuario.class));
         verify(pedidoService).registrar(any(Pedido.class));
@@ -91,19 +92,4 @@ class RegistraPedidoServiceTest {
         verify(pedidoProdutoService).registrar(any(PedidoProduto.class));
     }
 
-    /*
-    @Test
-    @DisplayName("Deve lançar erro quando registro não tiver 95 caracteres")
-    public void deveLancarErroQuandoRegistroNaoValido() {
-        String registroInvalido = "  ";
-
-        IllegalStateException exception = assertThrows(IllegalStateException.class, () -> {
-            registraPedidoService.registrar(registroInvalido);
-        });
-
-        String mensagemEsperada = "Invalid format on the line";
-        String mensagemRetornada = exception.getMessage();
-        assert (mensagemRetornada.contains(mensagemEsperada));
-    }
-    */
 }

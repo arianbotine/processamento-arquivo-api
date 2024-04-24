@@ -26,7 +26,7 @@ class ArquivoValidatorTest {
     @Test
     @DisplayName("Deve lançar erro quando arquivo for txt e estiver vazio")
     public void deveLancarErroQuandoArquivoTxtVazio() {
-        MultipartFile arquivoTxt = ArquivoMother.textoVazio();
+        MultipartFile arquivoTxt = ArquivoMother.vazio();
 
         ExceptionDto exception = assertThrows(ExceptionDto.class, () -> {
             arquivoValidator.validar(arquivoTxt);
@@ -54,7 +54,7 @@ class ArquivoValidatorTest {
     @Test
     @DisplayName("Não deve lançar erro quando arquivo for txt e estiver preenchido")
     public void naoDeveLancarErroQuandoArquivoTxtPreenchido() {
-        MultipartFile arquivoTxt = ArquivoMother.textoPrenchido();
+        MultipartFile arquivoTxt = ArquivoMother.umaLinhaValida();
 
         arquivoValidator.validar(arquivoTxt);
     }

@@ -13,7 +13,9 @@ public class ArquivoMother implements MultipartFile {
     private final String contentType;
     private final byte[] content;
 
-    private static final String REGISTRO = "0000000070                              Palmer Prosacco00000007530000000003     1836.7420210308";
+    private static final String REGISTRO_VALIDO_1 = "0000000070                              Palmer Prosacco00000007530000000003     1836.7420210308";
+
+    private static final String REGISTRO_INVALIDO_1 = "0000000070                             Palmer Prosacco00000007530000000003     1836.7420210308";
 
     public ArquivoMother(String name, String originalFilename, String contentType, byte[] content) {
         this.name = name;
@@ -22,7 +24,7 @@ public class ArquivoMother implements MultipartFile {
         this.content = content;
     }
 
-    public static ArquivoMother textoVazio() {
+    public static ArquivoMother vazio() {
         return new ArquivoMother(
                 "file",
                 "test-file.txt",
@@ -31,12 +33,21 @@ public class ArquivoMother implements MultipartFile {
         );
     }
 
-    public static ArquivoMother textoPrenchido() {
+    public static ArquivoMother umaLinhaValida() {
         return new ArquivoMother(
                 "file",
                 "test-file.txt",
                 "text/plain",
-                REGISTRO.getBytes()
+                REGISTRO_VALIDO_1.getBytes()
+        );
+    }
+
+    public static ArquivoMother umaLinhaInvalida() {
+        return new ArquivoMother(
+                "file",
+                "test-file.txt",
+                "text/plain",
+                REGISTRO_INVALIDO_1.getBytes()
         );
     }
 
