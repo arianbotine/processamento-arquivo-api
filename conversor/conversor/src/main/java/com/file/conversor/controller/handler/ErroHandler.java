@@ -5,6 +5,7 @@ import com.file.conversor.repository.dto.exception.ExceptionDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.MultipartException;
@@ -14,9 +15,9 @@ import java.text.ParseException;
 
 @RestControllerAdvice
 @Slf4j
-public class ExceptionHandler extends ResponseEntityExceptionHandler {
+public class ErroHandler extends ResponseEntityExceptionHandler {
 
-    @org.springframework.web.bind.annotation.ExceptionHandler({
+    @ExceptionHandler({
             ParseException.class,
             MethodArgumentTypeMismatchException.class,
             IllegalArgumentException.class})
@@ -29,7 +30,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(
+    @ExceptionHandler(
             MultipartException.class)
     public ResponseEntity<ErroResponseDto> handleInvalidFileException(MultipartException ex) {
         ErroResponseDto errorResponse = ErroResponseDto.builder()
@@ -40,7 +41,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
-    @org.springframework.web.bind.annotation.ExceptionHandler({
+    @ExceptionHandler({
             ExceptionDto.class})
     public ResponseEntity<ErroResponseDto> handlerExceptionValidator(ExceptionDto ex) {
         ErroResponseDto errorResponse = ErroResponseDto.builder()
@@ -53,7 +54,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(ex.getStatus()).body(errorResponse);
     }
 
-    @org.springframework.web.bind.annotation.ExceptionHandler({
+    @ExceptionHandler({
             Exception.class})
     public ResponseEntity<ErroResponseDto> handleInternalServerError(Exception ex) {
         ErroResponseDto errorResponse = ErroResponseDto.builder()
