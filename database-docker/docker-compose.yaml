@@ -1,4 +1,17 @@
 services:
+  conversor:
+      build:
+        context: ./conversor/conversor
+        dockerfile: Dockerfile
+      restart: always
+      environment:
+        POSTGRES_URL: "jdbc:postgresql://local-postgres-compose:5432/vertical_logistica_database"
+        POSTGRES_USER: "postgres"
+        POSTGRES_PASSWORD: "jMZDNzN1D7gp7Qk"
+      expose:
+        - "8080"
+      depends_on:
+        - local-postgres-compose
   local-postgres-compose:
     image: postgres
     environment:
@@ -8,9 +21,3 @@ services:
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./postgres-data:/var/lib/postgresql/data
-    networks:
-      - postgres-compose-network
-
-networks:
-  postgres-compose-network:
-    driver: bridge
