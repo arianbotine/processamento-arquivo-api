@@ -25,16 +25,15 @@
 											"key": "file",
 											"description": "use the file (data_2.txt)",
 											"type": "file",
-											"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/success-files/data_2.txt"
+											"src": "postman-cloud:///1ef01e73-19f2-4080-bb19-15e8cead2e56"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:8080/orders",
+									"raw": "{{env}}/orders",
 									"host": [
-										"localhost"
+										"{{env}}"
 									],
-									"port": "8080",
 									"path": [
 										"orders"
 									]
@@ -118,16 +117,15 @@
 													"key": "file",
 													"description": "use the file (usuario_string.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/usuario_string.txt"
+													"src": "postman-cloud:///1ef01e77-5096-4d80-9966-76ff2edefa40"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -146,16 +144,15 @@
 															"key": "file",
 															"description": "use the file (usuario_string.txt)",
 															"type": "file",
-															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/usuario_string.txt"
+															"src": "postman-cloud:///1ef01e77-5096-4d80-9966-76ff2edefa40"
 														}
 													]
 												},
 												"url": {
-													"raw": "localhost:8080/orders",
+													"raw": "{{env}}/orders",
 													"host": [
-														"localhost"
+														"{{env}}"
 													],
-													"port": "8080",
 													"path": [
 														"orders"
 													]
@@ -175,7 +172,7 @@
 												},
 												{
 													"key": "Date",
-													"value": "Tue, 23 Apr 2024 19:25:35 GMT"
+													"value": "Wed, 24 Apr 2024 11:24:37 GMT"
 												},
 												{
 													"key": "Connection",
@@ -183,7 +180,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"For input string: \\\"TESTEEEEEE\\\"\"\n}"
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
 										}
 									]
 								},
@@ -199,16 +196,15 @@
 													"key": "file",
 													"description": "use the file (usuario_less_than_10.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/usuario_less_than_10.txt"
+													"src": "postman-cloud:///1ef01e77-c46c-42a0-afd7-ad616653a818"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											],
@@ -294,16 +290,15 @@
 													"key": "file",
 													"description": "use the file (usuario_more_than_10.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/usuario_more_than_10.txt"
+													"src": "postman-cloud:///1ef01e78-849d-4d30-8102-fc2d9583324c"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											],
@@ -394,16 +389,15 @@
 													"key": "file",
 													"description": "use the file (nome_less_than_45.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/nome_less_than_45.txt"
+													"src": "postman-cloud:///1ef01e79-cc3d-4e50-ae95-db008dc64bd8"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -475,16 +469,15 @@
 													"key": "file",
 													"description": "use the file (nome_more_than_45.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/nome_more_than_45.txt"
+													"src": "postman-cloud:///1ef0234f-617e-4210-81e1-723b27ee4eec"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -561,16 +554,15 @@
 													"key": "file",
 													"description": "use the file (pedido_string.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/pedido_string.txt"
+													"src": "postman-cloud:///1ef01e7c-d7d9-4f90-838d-46ad5cf04718"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -589,16 +581,15 @@
 															"key": "file",
 															"description": "use the file (pedido_string.txt)",
 															"type": "file",
-															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/pedido_string.txt"
+															"src": "postman-cloud:///1ef01e7c-d7d9-4f90-838d-46ad5cf04718"
 														}
 													]
 												},
 												"url": {
-													"raw": "localhost:8080/orders",
+													"raw": "{{env}}/orders",
 													"host": [
-														"localhost"
+														"{{env}}"
 													],
-													"port": "8080",
 													"path": [
 														"orders"
 													]
@@ -618,7 +609,7 @@
 												},
 												{
 													"key": "Date",
-													"value": "Tue, 23 Apr 2024 19:42:07 GMT"
+													"value": "Wed, 24 Apr 2024 11:27:18 GMT"
 												},
 												{
 													"key": "Connection",
@@ -626,7 +617,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"For input string: \\\"TESTEEEEEE\\\"\"\n}"
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
 										}
 									]
 								},
@@ -642,16 +633,15 @@
 													"key": "file",
 													"description": "use the file (pedido_less_than_10.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/pedido_less_than_10.txt"
+													"src": "postman-cloud:///1ef01e7d-074b-4f80-8a91-8ff836acae24"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -723,16 +713,15 @@
 													"key": "file",
 													"description": "use the file (pedido_more_than_10.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/pedido_more_than_10.txt"
+													"src": "postman-cloud:///1ef01e7d-354d-4500-a5fe-4e2e8bca38e5"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -809,16 +798,15 @@
 													"key": "file",
 													"description": "use the file (produto_string.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/produto_string.txt"
+													"src": "postman-cloud:///1ef01e7e-c688-4280-b7b8-550b7d43028b"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -837,16 +825,15 @@
 															"key": "file",
 															"description": "use the file (produto_string.txt)",
 															"type": "file",
-															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/produto_string.txt"
+															"src": "postman-cloud:///1ef01e7e-c688-4280-b7b8-550b7d43028b"
 														}
 													]
 												},
 												"url": {
-													"raw": "localhost:8080/orders",
+													"raw": "{{env}}/orders",
 													"host": [
-														"localhost"
+														"{{env}}"
 													],
-													"port": "8080",
 													"path": [
 														"orders"
 													]
@@ -866,7 +853,7 @@
 												},
 												{
 													"key": "Date",
-													"value": "Tue, 23 Apr 2024 19:47:08 GMT"
+													"value": "Wed, 24 Apr 2024 11:27:40 GMT"
 												},
 												{
 													"key": "Connection",
@@ -874,7 +861,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"For input string: \\\"TESTEEEEEE\\\"\"\n}"
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
 										}
 									]
 								},
@@ -890,16 +877,15 @@
 													"key": "file",
 													"description": "use the file (produto_less_than_10.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/produto_less_than_10.txt"
+													"src": "postman-cloud:///1ef01e7f-35ac-44e0-a4bc-111844e74ec7"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -971,16 +957,15 @@
 													"key": "file",
 													"description": "use the file (produto_more_than_10.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/produto_more_than_10.txt"
+													"src": "postman-cloud:///1ef01e7f-a1b6-4ff0-abce-3e5b2f120ca6"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -1057,16 +1042,15 @@
 													"key": "file",
 													"description": "use the file (valor_string.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/valor_string.txt"
+													"src": "postman-cloud:///1ef01e81-4ef1-4cf0-8ca1-decf61d6b721"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -1085,16 +1069,15 @@
 															"key": "file",
 															"description": "use the file (valor_string.txt)",
 															"type": "file",
-															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/valor_string.txt"
+															"src": "postman-cloud:///1ef01e81-4ef1-4cf0-8ca1-decf61d6b721"
 														}
 													]
 												},
 												"url": {
-													"raw": "localhost:8080/orders",
+													"raw": "{{env}}/orders",
 													"host": [
-														"localhost"
+														"{{env}}"
 													],
-													"port": "8080",
 													"path": [
 														"orders"
 													]
@@ -1114,7 +1097,7 @@
 												},
 												{
 													"key": "Date",
-													"value": "Tue, 23 Apr 2024 19:49:16 GMT"
+													"value": "Wed, 24 Apr 2024 11:28:01 GMT"
 												},
 												{
 													"key": "Connection",
@@ -1122,7 +1105,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"For input string: \\\"TESTEEEEEEEE\\\"\"\n}"
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
 										}
 									]
 								},
@@ -1138,16 +1121,15 @@
 													"key": "file",
 													"description": "use the file (valor_less_than_12.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/valor_less_than_12.txt"
+													"src": "postman-cloud:///1ef01e81-e4a9-4720-a52b-518145c50b33"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -1219,16 +1201,15 @@
 													"key": "file",
 													"description": "use the file (valor_more_than_12.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/valor_more_than_12.txt"
+													"src": "postman-cloud:///1ef01e82-8538-4f60-983d-4007fdb30ee9"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -1305,16 +1286,15 @@
 													"key": "file",
 													"description": "use the file (data_string.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/data_string.txt"
+													"src": "postman-cloud:///1ef01e84-2491-4160-991f-f6a1ade7cf55"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -1333,16 +1313,15 @@
 															"key": "file",
 															"description": "use the file (data_string.txt)",
 															"type": "file",
-															"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/data_string.txt"
+															"src": "postman-cloud:///1ef01e84-2491-4160-991f-f6a1ade7cf55"
 														}
 													]
 												},
 												"url": {
-													"raw": "localhost:8080/orders",
+													"raw": "{{env}}/orders",
 													"host": [
-														"localhost"
+														"{{env}}"
 													],
-													"port": "8080",
 													"path": [
 														"orders"
 													]
@@ -1362,7 +1341,7 @@
 												},
 												{
 													"key": "Date",
-													"value": "Tue, 23 Apr 2024 19:51:21 GMT"
+													"value": "Wed, 24 Apr 2024 11:28:25 GMT"
 												},
 												{
 													"key": "Connection",
@@ -1370,7 +1349,7 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Unparseable date: \\\"TESTEEEE\\\"\"\n}"
+											"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Invalid data provided\"\n}"
 										}
 									]
 								},
@@ -1386,16 +1365,15 @@
 													"key": "file",
 													"description": "use the file (data_less_than_8.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/data_less_than_8.txt"
+													"src": "postman-cloud:///1ef01e84-d9fb-4f50-8b0a-3cf493af25b8"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -1467,16 +1445,15 @@
 													"key": "file",
 													"description": "use the file (data_more_than_8.txt)",
 													"type": "file",
-													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/data_more_than_8.txt"
+													"src": "postman-cloud:///1ef01e85-1ff4-48e0-a898-acf5663e01f6"
 												}
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders",
+											"raw": "{{env}}/orders",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											]
@@ -1549,16 +1526,15 @@
 										{
 											"key": "file",
 											"type": "file",
-											"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/success-files/data_2.txt"
+											"src": "postman-cloud:///1ef01e73-19f2-4080-bb19-15e8cead2e56"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:8080/orders/upload",
+									"raw": "{{env}}/orders/upload",
 									"host": [
-										"localhost"
+										"{{env}}"
 									],
-									"port": "8080",
 									"path": [
 										"orders",
 										"upload"
@@ -1636,6 +1612,85 @@
 							]
 						},
 						{
+							"name": "400 error - Something wrong with the file",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"description": "use the file (dados_invalid_type.jpg)",
+											"type": "file",
+											"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/dados_invalid_type.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/orders",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "400 error - Something wrong with the file",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"description": "use the file (dados_invalid_type.jpg)",
+													"type": "file",
+													"src": "/C:/projetos/processamento-arquivo-api/docs/test-cases/post-teste-arquivos/expected-errors-files/dados_invalid_type.jpg"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{env}}/orders",
+											"host": [
+												"{{env}}"
+											],
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 24 Apr 2024 12:11:50 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"BAD_REQUEST\",\n    \"message\": \"Select the file to be uploaded again\"\n}"
+								}
+							]
+						},
+						{
 							"name": "400 error -  invalid file type as .jpg",
 							"request": {
 								"method": "POST",
@@ -1652,11 +1707,10 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:8080/orders",
+									"raw": "{{env}}/orders",
 									"host": [
-										"localhost"
+										"{{env}}"
 									],
-									"port": "8080",
 									"path": [
 										"orders"
 									]
@@ -1733,11 +1787,10 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:8080/orders",
+									"raw": "{{env}}/orders",
 									"host": [
-										"localhost"
+										"{{env}}"
 									],
-									"port": "8080",
 									"path": [
 										"orders"
 									]
@@ -1814,11 +1867,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/orders",
+									"raw": "{{env}}/orders",
 									"host": [
-										"localhost"
+										"{{env}}"
 									],
-									"port": "8080",
 									"path": [
 										"orders"
 									],
@@ -1931,11 +1983,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/orders?page=5&size=3",
+									"raw": "{{env}}/orders?page=5&size=3",
 									"host": [
-										"localhost"
+										"{{env}}"
 									],
-									"port": "8080",
 									"path": [
 										"orders"
 									],
@@ -2044,11 +2095,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/orders?orderId=137",
+									"raw": "{{env}}/orders?orderId=137",
 									"host": [
-										"localhost"
+										"{{env}}"
 									],
-									"port": "8080",
 									"path": [
 										"orders"
 									],
@@ -2139,11 +2189,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/orders?startDate=2021-03-23&endDate=2021-03-23",
+									"raw": "{{env}}/orders?startDate=2021-03-23&endDate=2021-03-23",
 									"host": [
-										"localhost"
+										"{{env}}"
 									],
-									"port": "8080",
 									"path": [
 										"orders"
 									],
@@ -2232,11 +2281,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/orders?orderId=455485",
+									"raw": "{{env}}/orders?orderId=455485",
 									"host": [
-										"localhost"
+										"{{env}}"
 									],
-									"port": "8080",
 									"path": [
 										"orders"
 									],
@@ -2331,11 +2379,10 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "localhost:8080/orders?orderId=teste",
+											"raw": "{{env}}/orders?orderId=teste",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											],
@@ -2422,11 +2469,10 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "localhost:8080/orders?orderId=999999999999999999999999999",
+											"raw": "{{env}}/orders?orderId=999999999999999999999999999",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											],
@@ -2518,11 +2564,10 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "localhost:8080/orders?startDate=teste&endDate=teste",
+											"raw": "{{env}}/orders?startDate=teste&endDate=teste",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											],
@@ -2612,11 +2657,10 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "localhost:8080/orders?page=teste",
+											"raw": "{{env}}/orders?page=teste",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											],
@@ -2723,11 +2767,10 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "localhost:8080/orders?page=-10",
+											"raw": "{{env}}/orders?page=-10",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											],
@@ -2834,11 +2877,10 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "localhost:8080/orders?size=teste",
+											"raw": "{{env}}/orders?size=teste",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											],
@@ -2945,11 +2987,10 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "localhost:8080/orders?size=-10",
+											"raw": "{{env}}/orders?size=-10",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											],
@@ -3056,11 +3097,10 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "localhost:8080/orders?size=0",
+											"raw": "{{env}}/orders?size=0",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders"
 											],
@@ -3182,11 +3222,10 @@
 									]
 								},
 								"url": {
-									"raw": "localhost:8080/orders/upload",
+									"raw": "{{env}}/orders/upload",
 									"host": [
-										"localhost"
+										"{{env}}"
 									],
-									"port": "8080",
 									"path": [
 										"orders",
 										"upload"
@@ -3210,11 +3249,10 @@
 											]
 										},
 										"url": {
-											"raw": "localhost:8080/orders/upload",
+											"raw": "{{env}}/orders/upload",
 											"host": [
-												"localhost"
+												"{{env}}"
 											],
-											"port": "8080",
 											"path": [
 												"orders",
 												"upload"
@@ -3239,7 +3277,7 @@
 										},
 										{
 											"key": "Content-Type",
-											"value": "application/json"
+											"value": "application/problem+json"
 										},
 										{
 											"key": "Transfer-Encoding",
@@ -3247,7 +3285,7 @@
 										},
 										{
 											"key": "Date",
-											"value": "Tue, 23 Apr 2024 20:03:31 GMT"
+											"value": "Wed, 24 Apr 2024 11:12:59 GMT"
 										},
 										{
 											"key": "Keep-Alive",
@@ -3259,7 +3297,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"timestamp\": \"2024-04-23T20:03:31.767+00:00\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"path\": \"/orders/upload\"\n}"
+									"body": "{\n    \"type\": \"about:blank\",\n    \"title\": \"Not Found\",\n    \"status\": 404,\n    \"detail\": \"No static resource orders/upload.\",\n    \"instance\": \"/orders/upload\"\n}"
 								}
 							]
 						}
@@ -3284,11 +3322,10 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:8080/orders",
+					"raw": "{{env}}/orders",
 					"host": [
-						"localhost"
+						"{{env}}"
 					],
-					"port": "8080",
 					"path": [
 						"orders"
 					]
@@ -3311,11 +3348,10 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:8080/orders",
+							"raw": "{{env}}/orders",
 							"host": [
-								"localhost"
+								"{{env}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders"
 							]
@@ -3331,7 +3367,7 @@
 						},
 						{
 							"key": "Content-Type",
-							"value": "application/json"
+							"value": "application/problem+json"
 						},
 						{
 							"key": "Transfer-Encoding",
@@ -3339,7 +3375,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 23 Apr 2024 20:03:49 GMT"
+							"value": "Wed, 24 Apr 2024 11:14:39 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -3351,7 +3387,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"timestamp\": \"2024-04-23T20:03:49.239+00:00\",\n    \"status\": 405,\n    \"error\": \"Method Not Allowed\",\n    \"path\": \"/orders\"\n}"
+					"body": "{\n    \"type\": \"about:blank\",\n    \"title\": \"Method Not Allowed\",\n    \"status\": 405,\n    \"detail\": \"Method 'PATCH' is not supported.\",\n    \"instance\": \"/orders\"\n}"
 				}
 			]
 		}

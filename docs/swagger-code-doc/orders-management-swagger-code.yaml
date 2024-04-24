@@ -362,53 +362,44 @@ components:
     ErrorResponse404:        
       type: object
       properties:
-        timestamp:
+        title:
           type: string
-          format: datetime
-          example: "yyyy-mm-ddThh:mm:ss"     
+          example: Not Found   
         status:
           type: integer
           format: int64
           example: 404  
-        error:
+        detail:
           type: string
-          example: Not Found
-        path:
+          example: No static resource ...
+        instance:
           type: string
-          example: /Path/ provided on the request     
+          example: /'URL'/ provided    
 
     ErrorResponse405:        
       type: object
       properties:
-        timestamp:
+        title:
           type: string
-          format: datetime
-          example: "yyyy-mm-ddThh:mm:ss"     
+          example: Method Not Allowed    
         status:
           type: integer
           format: int64
           example: 405  
-        error:
+        detail:
           type: string
-          example: Method Not Allowed
-        path:
+          example: Method 'X' is not supported.
+        instance:
           type: string
           example: /orders    
 
     ErrorResponse500:        
       type: object
       properties:
-        timestamp:
-          type: string
-          format: datetime
-          example: "yyyy-mm-ddThh:mm:ss"     
         status:
           type: integer
           format: int64
-          example: 500  
-        error:
+          example: INTERNAL_SERVER_ERROR     
+        message:
           type: string
-          example: Internal Server Error
-        path:
-          type: string
-          example: /orders            
+          example: Internal server error            

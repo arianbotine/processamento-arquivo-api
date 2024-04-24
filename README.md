@@ -104,7 +104,7 @@ O projeto considerou a consulta geral de pedidos e, também, a inclusão dos seg
 ## Tecnologias
 
 Tecnologias aplicadas no desenvolvimento do projeto:
-* Java Spring Boot (Maven) 
+* Java Spring Boot (Maven) - Java 17
     * Lombok (abstração dos getters e setters e construção de builders)  
     * JPA e Hibernate  
 * PostgreSQL (Docker)
@@ -118,6 +118,8 @@ Foi implementada uma API com dois endpoints:
 * GET para buscar os registros que foram armazenados no banco de dados e retorná-los em um JSON.
  
 Para mais detalhes sobre os endpoints, acesse as especificações do [Swagger](docs/swagger-code-doc/orders-management-swagger-code.yaml)
+
+Todo o código foi escrito em português mas tudo que tem exposição externa (via API) foi escrito em inglês, considerando a documentação no swagger.
 
 Segue um detalhamento sobre a modelagem de dados aplicada no projeto:
 
@@ -158,7 +160,9 @@ Pacotes:
 
 Além dos testes unitários, foram projetados cenários de testes para explorar os retornos de sucesso e erros esperados para ambos os endpoints (POST e GET). Para mais detalhes sobre o planejamento, acesse a planilha [casos de testes](docs/test-cases/casos-teste-post-get.xlsx).  
 
-A partir desse documento, utilizando o Postman foi criada essa [collection](docs/test-cases/Orders%20Management%20API.postman_collection.json) para realização dos testes manuais. Onde, o usuário poderá ter acesso detalhado a diversos tipos de request e seus respectivos responses.
+A partir desse documento, utilizando o Postman foi criada uma collection para realização dos testes manuais, onde o usuário poderá ter acesso detalhado a diversos tipos de request e seus respectivos responses. Para mais detalhes sobre collection e variaveis de ambiente criados, acesse:
+* [Postman Collection](docs/test-cases/postman/Orders%20Management%20API.postman_collection.json)
+* [Postman Environment](docs/test-cases/postman/Local%20Environment.postman_environment.json)
 
 ** Observação **
 
