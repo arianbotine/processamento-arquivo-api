@@ -1,6 +1,7 @@
 package com.file.conversor.service.validator;
 
 import com.file.conversor.mother.ArquivoMother;
+import com.file.conversor.repository.dto.exception.ExceptionDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,7 @@ class ArquivoValidatorTest {
     public void deveLancarErroQuandoArquivoTxtVazio() {
         MultipartFile arquivoTxt = ArquivoMother.textoVazio();
 
-        ExceptionValidator exception = assertThrows(ExceptionValidator.class, () -> {
+        ExceptionDto exception = assertThrows(ExceptionDto.class, () -> {
             arquivoValidator.validar(arquivoTxt);
         });
 
@@ -41,7 +42,7 @@ class ArquivoValidatorTest {
     public void deveLancarErroQuandoArquivoNaoForTxt() {
         MultipartFile arquivoTxt = ArquivoMother.imagem();
 
-        ExceptionValidator exception = assertThrows(ExceptionValidator.class, () -> {
+        ExceptionDto exception = assertThrows(ExceptionDto.class, () -> {
             arquivoValidator.validar(arquivoTxt);
         });
 

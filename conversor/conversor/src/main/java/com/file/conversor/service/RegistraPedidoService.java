@@ -8,7 +8,6 @@ import com.file.conversor.repository.entity.Produto;
 import com.file.conversor.repository.entity.Usuario;
 import com.file.conversor.service.converter.RegistroPedidoDtoConverter;
 import com.file.conversor.service.validator.ArquivoValidator;
-import com.file.conversor.service.validator.ExceptionValidator;
 import com.file.conversor.service.validator.PedidoValidator;
 import jakarta.transaction.Transactional;
 import lombok.SneakyThrows;

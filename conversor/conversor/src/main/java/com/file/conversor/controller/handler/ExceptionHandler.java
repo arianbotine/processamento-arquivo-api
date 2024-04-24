@@ -1,11 +1,10 @@
 package com.file.conversor.controller.handler;
 
 import com.file.conversor.repository.dto.ErroResponseDto;
-import com.file.conversor.service.validator.ExceptionValidator;
+import com.file.conversor.repository.dto.exception.ExceptionDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -14,9 +13,9 @@ import java.text.ParseException;
 
 @RestControllerAdvice
 @Slf4j
-public class ErrorHandler extends ResponseEntityExceptionHandler {
+public class ExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({
+    @org.springframework.web.bind.annotation.ExceptionHandler({
             ParseException.class,
             MethodArgumentTypeMismatchException.class,
             IllegalArgumentException.class})
@@ -29,9 +28,9 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
-    @ExceptionHandler({
-            ExceptionValidator.class})
-    public ResponseEntity<ErroResponseDto> handlerExceptionValidator(ExceptionValidator ex) {
+    @org.springframework.web.bind.annotation.ExceptionHandler({
+            ExceptionDto.class})
+    public ResponseEntity<ErroResponseDto> handlerExceptionValidator(ExceptionDto ex) {
         ErroResponseDto errorResponse = ErroResponseDto.builder()
                 .status(ex.getStatus())
                 .mensagem(ex.getMensagem())
@@ -42,7 +41,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(ex.getStatus()).body(errorResponse);
     }
 
-    @ExceptionHandler({
+    @org.springframework.web.bind.annotation.ExceptionHandler({
             Exception.class})
     public ResponseEntity<ErroResponseDto> handleInternalServerError(Exception ex) {
         ErroResponseDto errorResponse = ErroResponseDto.builder()
