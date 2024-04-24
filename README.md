@@ -15,7 +15,7 @@ Este projeto visa aprofundar o entendimento dos conceitos de API REST por meio d
 - [Arquitetura](#arquitetura)
 - [Testes](#testes)
 - [Uso](#uso)
-- [Pendente](#pendente)
+- [Pendências](#pendências)
 
 # Contexto
 
@@ -162,7 +162,7 @@ Para testar diversos retornos de "erros esperados" do endpoint POST, foi necess�
 
 Foi gerado um docker-compose para o servico do postgres e um dockerfile para a aplicação java, sendo assim, para subir o projeto, basta executar `docker-compose up --build` em um local onde tem a docker instalada e o projeto já estará pronto para uso.
 
-## Pendente
+## Pendências
 
 * Passar API POST para uma requisição assincrona, retornando um 202 - Accepted e iniciar uma thread no java, ficou muito lento a importação/processamento do arquivo em uma requisição sincrona
 * Finalizar os testes unitários
