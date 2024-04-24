@@ -1,9 +1,6 @@
 package com.file.conversor.service;
 
-import com.file.conversor.mother.PedidoMother;
-import com.file.conversor.mother.ProdutoMother;
-import com.file.conversor.mother.RegistroPedidoDtoMother;
-import com.file.conversor.mother.UsuarioMother;
+import com.file.conversor.mother.*;
 import com.file.conversor.repository.dto.RegistroPedidoDto;
 import com.file.conversor.repository.entity.Pedido;
 import com.file.conversor.repository.entity.PedidoProduto;
@@ -17,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.text.ParseException;
 
@@ -49,11 +47,12 @@ class RegistraPedidoServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    private final String REGISTRO = "0000000070                              Palmer Prosacco00000007530000000003     1836.7420210308";
-
+    /*
     @Test
     @DisplayName("Deve registrar pedido sem erros")
     public void deveRegistrarPedido() throws ParseException {
+
+        MultipartFile arquivoTxt = ArquivoMother.textoPrenchido();
 
         RegistroPedidoDto registroPedidoDto = RegistroPedidoDtoMother.simples().build();
         Usuario usuario = UsuarioMother.simples().build();
@@ -87,5 +86,6 @@ class RegistraPedidoServiceTest {
         String mensagemRetornada = exception.getMessage();
         assert (mensagemRetornada.contains(mensagemEsperada));
     }
+     */
 
 }

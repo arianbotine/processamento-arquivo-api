@@ -13,6 +13,8 @@ public class ArquivoMother implements MultipartFile {
     private final String contentType;
     private final byte[] content;
 
+    private static final String REGISTRO = "0000000070                              Palmer Prosacco00000007530000000003     1836.7420210308";
+
     public ArquivoMother(String name, String originalFilename, String contentType, byte[] content) {
         this.name = name;
         this.originalFilename = originalFilename;
@@ -34,7 +36,7 @@ public class ArquivoMother implements MultipartFile {
                 "file",
                 "test-file.txt",
                 "text/plain",
-                "conteudo".getBytes()
+                REGISTRO.getBytes()
         );
     }
 

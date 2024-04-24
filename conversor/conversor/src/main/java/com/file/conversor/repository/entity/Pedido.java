@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @Entity
-@Table(name = "pedido")
+@Table(name = "pedido", indexes = {@Index(name = "idx_data_compra", columnList = "data_compra")})
 public class Pedido {
 
     @Id
