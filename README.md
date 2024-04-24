@@ -141,8 +141,15 @@ O projeto foi desenvolvido utilizando uma arquitetura de camadas para separar as
 Pacotes:
 
 * `controller`: Controladores de api
+    * `handler`: Exception handler para controle de erros gerais
 * `repository`: Tratamento de dados
+    * `dao`: Objeto de acesso a dado, é o ponto mais próximo do banco de dados
+    * `dto`: Objeto de transferência de dados, é o objeto que transfere dados entre a camada de dados e a camada de negócio, assim não é exposto diretamente as entidades.
+    * `entity`: Entidades lógicas que se relacionam com as entidades fisísicas do banco de dados
 * `service`: Regras de negócio e validações
+    * `converter`: Lógicas de conversão de dados desnormalizados em objetos
+    * `mapper`: Lógica de conversão de um tipo de objeto para outro tipo de objeto
+    * `validator`: Validações em gerais que impedem a execução
 
 ![pacotes](assets/pacotes.png)
 
@@ -160,7 +167,9 @@ Para testar diversos retornos de "erros esperados" do endpoint POST, foi necess�
 
 ## Uso
 
-Foi gerado um docker-compose para o servico do postgres e um dockerfile para a aplicação java, sendo assim, para subir o projeto, basta executar `docker-compose up --build` em um local onde tem a docker instalada e o projeto já estará pronto para uso.
+Foi gerado um docker-compose para o servico do postgres e um dockerfile para a aplicação java, sendo assim, para subir o projeto, basta executar `docker compose up` em um local onde tem a docker instalada e o projeto já estará pronto para uso.
+
+Caso seja feita modificações no código java, o comando que deve ser usado é o `docker compose up --build`, caso contrário as modificações não serão acatadas.
 
 ## Pendências
 
@@ -171,6 +180,7 @@ Foi gerado um docker-compose para o servico do postgres e um dockerfile para a a
 * Criar um enum para as mensagens de erro
 * Estudar uma forma de aplicar um force build no docker compose
 * Implementar automatização de validações no postman para validar de forma automatica se houve mudança dos responses
+* Melhorar tratamento de erro para considerar situações especificas em cada linha do arquivo
 
 
 
